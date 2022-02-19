@@ -323,56 +323,11 @@
           </div>
 
         </div>
-        
-          <div class="footer_wrapper bg-dark fit-content">
-            <div class="container">
-              <div class="row pt-3">
-                <div class="col-md-4 text-center footerimg">
-                    <img src="images/Login/deshi.png">
-                </div>
-                <div class="col-md-4 text-center">
-                  <p>
-                    <a class="footwrite" href="Index.html">Home</a>
-                  </p>
-                  <p>
-                    <a class="footwrite" href="Menu.html">Menu</a>
-                  </p>
-                  <p>
-                    <a class="footwrite" href="Register.html">Register</a>
-                  </p>
-                  <p>
-                    <a class="footwrite" href="#">Order</a>
-                  </p>
-                  <p>
-                    <a class="footwrite" href="#">About</a>
-                  </p>
-                  <p>
-                    <a class="footwrite" href="#">Devs Corner</a>
-                  </p>
-                  <p>
-                    <a class="footwrite" href="#">Contact Us</a>
-                  </p>
-                </div>
-                <div class="col-md-4 text-center">
-                  <p>
-                    <a href="#"><i class="fab fa-facebook footicons"></i></a>
-                  </p>
-                  <p>
-                    <a href="#"><i class="fab fa-instagram-square footicons"></i></a>
-                  </p>
-                  <p>
-                    <a href="#"><i class="fab fa-linkedin-in footicons"></i></a>
-                  </p>
-                  <p>
-                    <a href="#"><i class="fab fa-twitter footicons"></i></a>
-                  </p>
-                </div>
-              </div>
-              <div class="row">
-                <p class="text-center last">@ALL RIGHTS RESERVED BY TEAM OPTIMIST...</p>
-              </div>
-            </div>
-          </div>
+
+        <?php
+          include "footer.php";
+        ?>
+
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
 
