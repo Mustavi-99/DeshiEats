@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2022 at 07:12 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.23
+-- Generation Time: Feb 19, 2022 at 07:30 PM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 7.4.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -69,6 +69,20 @@ INSERT INTO `chef` (`ChefID`, `ChefName`, `ChefEmail`, `ChefPassword`, `ChefCont
 (9, 'Misti Mukh', 'xyz@gmail.com', '123456', 1, 'We offer authentic Bengali desserts to please your sweet tooth. Whether you are craving sweets or lo', 'abc', 'abc', 'images/DeshiEatsMenu/MistiMukh/Cover.jpg'),
 (10, 'Chatgaiya House', 'xyz@gmail.com', '123456', 1, 'We, at Chatgaiya House, are aimed to serve you the most authentic traditional cuisine from Chottogra', 'abc', 'abc', 'images/DeshiEatsMenu/ChatgaiyaHouse/Cover.jpg'),
 (11, 'EatSylheti', 'xyz@gmail.com', '123456', 1, 'Taste the best Sylheti Cuisine at EatSylheti. Our very own Sylheti chefs cook authentic and deliciou', 'abc', 'abc', 'images/DeshiEatsMenu/EatSylheti/Cover.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contactus`
+--
+
+CREATE TABLE `contactus` (
+  `ContactID` int(11) NOT NULL,
+  `ContactName` varchar(255) NOT NULL,
+  `ContactEmail` varchar(255) NOT NULL,
+  `ContactPhone` varchar(11) NOT NULL,
+  `ContactMessage` mediumtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -221,6 +235,12 @@ ALTER TABLE `chef`
   ADD PRIMARY KEY (`ChefID`);
 
 --
+-- Indexes for table `contactus`
+--
+ALTER TABLE `contactus`
+  ADD PRIMARY KEY (`ContactID`);
+
+--
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
@@ -259,6 +279,12 @@ ALTER TABLE `cartlist`
 --
 ALTER TABLE `chef`
   MODIFY `ChefID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `contactus`
+--
+ALTER TABLE `contactus`
+  MODIFY `ContactID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `customer`
