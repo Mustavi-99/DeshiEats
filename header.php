@@ -22,14 +22,23 @@
                   <li class="nav-item">
                     <a class="nav-link navwrite" href="#">Order</a>
                   </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link navwrite" href="Register.php">Register</a>
-                  </li>
+                  <?php 
+                      if(isset($_SESSION['ID'])){
+                        if($_SESSION['type']=="chef"){
+                          echo "<li class='nav-item'><a class='nav-link navwrite' href='ChefProfile.php'>Profile</a></li>";
+                          //echo "<li class='nav-item'><a class='nav-link' href='logOut.php'><i class='fas fa-sign-out-alt ico'></i></a></li>";
+                        }elseif($_SESSION['type']=="customer"){
+                          echo "<li class='nav-item'><a class='nav-link navwrite' href='CustomerProfile.php'>Profile</a></li>";
+                          //echo "<li class='nav-item'><a class='nav-link' href='logOut.php'><i class='fas fa-sign-out-alt ico'></i></a></li>";
+                        } 
+                        
+                      }else{
+                         echo "<li class='nav-item'><a class='nav-link navwrite' href='Register.php'>Register</a></li>";
+                         echo "<li class='nav-item'><a class='nav-link navwrite' href='Login.php'>Login</a></li>";
+                         
+                      }
+                  ?>
                   
-                  <li class="nav-item">
-                    <a class="nav-link navwrite" href="Login.php">Login</a>
-                  </li>
 
                   <li class="nav-item">
                     <a class="nav-link navwrite" href="#">About</a>
@@ -49,9 +58,7 @@
                       <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-user ico"></i></a>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-sign-out-alt ico"></i></a>
-                      </li>
+                      <li class='nav-item'><a class='nav-link' href='logOut.php'><i class='fas fa-sign-out-alt ico'></i></a></li>
                </ul>
               </div>
             </div>

@@ -1,5 +1,22 @@
 <?php 
+    include("connect.php");
+    include("functions.php");
 
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $email=$_POST['useremail'];
+        $pass=$_POST['userpassword'];
+        $utype=$_POST['flexRadioDefault'];
+
+        if(!empty($email) && !empty($pass)){
+            
+            loginUser($CON,$email,$pass,$utype); //this function is defined in functions.php . check there
+
+        }else{
+            echo "<script>window.location.href='Login.php?email-and-pass-empty';</script>";
+        }
+
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -61,13 +78,13 @@
                                 <label class="dontre">Rmember me</label>
                             </div>
                             <div class="form-check f_swi">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="chef">
                                 <label class="form-check-label labe" for="flexRadioDefault1">
                                 I'm a chef
                                 </label>
                             </div>
                             <div class="form-check f_swi">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="customer">
                                 <label class="form-check-label labe" for="flexRadioDefault2">
                                 I'm a customer
                                 </label>
