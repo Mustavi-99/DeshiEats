@@ -77,7 +77,7 @@
      
          if($Check_pwd==$pwd){
            
-            session_start();
+            
            if($type=="chef"){
                
                $_SESSION["ID"]=$userExists["ChefID"];

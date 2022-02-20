@@ -8,12 +8,17 @@
         $pass=$_POST['userpassword'];
         $utype=$_POST['flexRadioDefault'];
 
-        if(!empty($email) && !empty($pass)){
+        if(!empty($email) && !empty($pass) && !empty($utype)){
             
             loginUser($CON,$email,$pass,$utype); //this function is defined in functions.php . check there
 
         }else{
-            echo "<script>window.location.href='Login.php?email-and-pass-empty';</script>";
+            ?>
+            <script type="text/javascript">
+               alert("User name or password empty or the type not chosen. Check please.");
+               window.location.href = "Login.php"
+            </script>
+            <?php
         }
 
     }
