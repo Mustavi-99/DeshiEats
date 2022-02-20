@@ -1,3 +1,27 @@
+<?php
+session_start();
+include("connect.php");
+if(isset($_SESSION["ID"])){
+  if($_SESSION["type"]=="chef"){
+    ?>
+      <script type="text/javascript">
+        alert("Invalid user");
+        window.location.href = "Index.php"
+      </script>
+     <?php 
+  }
+}else{
+  ?>
+<script type="text/javascript">
+  alert("User needs to be logged In");
+  window.location.href = "Login.php"
+</script>
+<?php
+}
+$sql = "SELECT * FROM customer where CustID=".$_SESSION["ID"];
+$result = mysqli_query($link,$sql);
+$row = mysqli_fetch_assoc($result);
+?>
 <!DOCTYPE html>
 <html>
 
@@ -16,7 +40,7 @@
   <link type="text/css" rel="stylesheet" href="css/DeStylesheet2.css" />
 
 
-  <title>Desh-eats_CustomerProfile_Page</title>
+  <title>Deshieats_CustomerProfile_Page</title>
 
 </head>
 
@@ -36,31 +60,34 @@
         <form action="" method="POST" enctype="multipart/form-data">
           <div class="mb-4 mt-2 userprofilecontents">
             <p class="userprofilelabels">Full Name:</p>
-            <input type="text" placeholder="#Backend <?php //echo $fullName 
-                                                      ?>" name="userprofilename" value="" class="form-control userformholders" />
+            <input type="text" placeholder="<?php echo $row["CustName"] ?>" name="userprofilename" value="<?php echo $row["CustName"] ?>" class="form-control userformholders" />
           </div>
 
           <!-- **********available Name er ekta variable thakbe... edit button click korle edit kora jabe.*********** -->
 
           <div class="mb-4 mt-2 userprofilecontents">
             <p class="userprofilelabels">Email:</p>
-            <input type="email" placeholder="#Backend<?php //echo $email 
-                                                      ?>" name="userprofileemail" value="" class="form-control userformholders" />
+            <input type="email" placeholder="<?php echo $row["CustEmail"] ?>" name="userprofileemail" value="<?php echo $row["CustEmail"] ?>" class="form-control userformholders" />
+          </div>
+          <div class="mb-4 mt-2 userprofilecontents">
+            <p class="userprofilelabels">Address:</p>
+            <input type="text" placeholder="<?php echo $row["CustAddress"] ?>" name="userprofilecontactno" value="<?php echo $row["CustAddress"] ?>" class="form-control userformholders" />
           </div>
           <div class="mb-4 mt-2 userprofilecontents">
             <p class="userprofilelabels">Contact No:</p>
-            <input type="text" placeholder="#Backend<?php //echo $contact 
-                                                    ?>" name="userprofilecontactno" value="" class="form-control userformholders" />
+            <input type="text" placeholder="<?php echo $row["CustContactNumber"] ?>" name="userprofilecontactno" value="<?php echo $row["CustContactNumber"] ?>" class="form-control userformholders" />
+          </div>
+          <div class="mb-4 mt-2 userprofilecontents">
+            <p class="userprofilelabels">Area:</p>
+            <input type="text" placeholder="<?php echo $row["CustArea"] ?>" name="userprofilecontactno" value="<?php echo $row["CustArea"] ?>" class="form-control userformholders" />
           </div>
           <div class="mb-4 mt-2 userprofilecontents">
             <p class="userprofilelabels">Password:</p>
-            <input type="password" placeholder="#Backende<?php //echo $password 
-                                                          ?>" name="userPassword" value="" class="form-control userformholders" />
+            <input type="password" placeholder="<?php echo $row["CustPassword"] ?>" name="userPassword" value="<?php echo $row["CustPassword"] ?>" class="form-control userformholders" />
           </div>
           <div class="mb-4 mt-2 userprofilecontents">
             <p class="userprofilelabels">User Name:</p>
-            <input type="text" placeholder="#Backend<?php //echo $userName 
-                                                    ?>" name="username" value="" class="form-control userformholders" disabled />
+            <input type="text" placeholder="<?php echo $row["CustName"] ?>" name="username" value="<?php echo $row["CustName"] ?>" class="form-control userformholders" disabled />
           </div>
           <div class="userprofileallbuttons">
             <button type="submit" name="UserProfileconfirm" value="Save changes" class="btn-submit" onclick=" "> Submit</button>
