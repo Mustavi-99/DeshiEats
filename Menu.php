@@ -1,19 +1,27 @@
 <?php
-  session_start();
-  include("connect.php");
-  include("functions.php");
-  if(isset($_SESSION["ID"]))
-         {
-            $sql = "SELECT * FROM item";
-            $results = mysqli_query($link,$sql);
-         }else{
-            ?>
-            <script type="text/javascript">
-               alert("User needs to be logged In");
-               window.location.href = "Login.php"
-            </script>
-            <?php
-         }
+session_start();
+include("connect.php");
+include("functions.php");
+if (isset($_SESSION["ID"])) {
+  if($_SESSION["type"]=="customer"){
+    $sql = "SELECT * FROM item";
+    $results = mysqli_query($link, $sql);
+  }else{
+    ?>
+  <script type="text/javascript">
+    alert("Invalid User");
+    window.location.href = "Chef'sExhibition.php"
+  </script>
+<?php
+  }
+} else {
+?>
+  <script type="text/javascript">
+    alert("User needs to be logged In");
+    window.location.href = "Login.php"
+  </script>
+<?php
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -55,36 +63,35 @@
       </div>
       <div class="row">
         <?php
-        while ($row = mysqli_fetch_assoc($results))
-        {?>
+        while ($row = mysqli_fetch_assoc($results)) { ?>
 
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall">
-          <div class="Items">
-            <img src="<?php echo $row["ItemImage"] ?>">
-            <div class="allthings">
-              <p class="itemheading"><?php echo $row["ItemName"] ?>
-              <p>
-              <p class="itemdes"><?php echo $row["ShortDescription"] ?></p>
-              <div class="add">
-                <p class="addalliconsp"><?php echo $row["Price"] ?>/=</p>
-                <div class="addall">
-                  <button class="minusplus">
-                    <i class="addallicons fas fa-minus quantity"></i>
-                  </button>
-                  <p class="addalliconsp">1</p>
-                  <button class="minusplus">
-                    <i class="addallicons fas fa-plus"></i>
-                  </button>
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall">
+            <div class="Items">
+              <img src="<?php echo $row["ItemImage"] ?>">
+              <div class="allthings">
+                <p class="itemheading"><?php echo $row["ItemName"] ?>
+                <p>
+                <p class="itemdes"><?php echo $row["ShortDescription"] ?></p>
+                <div class="add">
+                  <p class="addalliconsp"><?php echo $row["Price"] ?>/=</p>
+                  <div class="addall">
+                    <button class="minusplus">
+                      <i class="addallicons fas fa-minus quantity"></i>
+                    </button>
+                    <p class="addalliconsp">1</p>
+                    <button class="minusplus">
+                      <i class="addallicons fas fa-plus"></i>
+                    </button>
+                  </div>
                 </div>
+                <button class="addtocart">
+                  <p class="">ADD TO CART</p>
+                  <i class="fas fa-shopping-cart"></i>
+                </button>
               </div>
-              <button class="addtocart">
-                <p class="">ADD TO CART</p>
-                <i class="fas fa-shopping-cart"></i>
-              </button>
             </div>
           </div>
-        </div>
-        
+
         <?php
         }
         ?>

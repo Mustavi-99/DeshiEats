@@ -2,7 +2,19 @@
     session_start();
     include("connect.php");
     include("functions.php");
-
+    if(isset($_SESSION["ID"]))
+    {
+            if($_SESSION['type']=="customer"){
+                echo "<script> 
+                alert('User already logged in.');
+                window.location.href='Index.php';</script>";
+            }else{
+                ?><script>
+                alert('User already logged in.');
+                window.location.href="Chef'sExhibition.php";</script>
+                <?php 
+            }
+    }
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $email=$_POST['useremail'];
         $pass=$_POST['userpassword'];
@@ -77,12 +89,12 @@
                                 <input type="password" placeholder="Enter your password" name="userpassword" value="" class="form-control" />
                             </div>
                             <div class="domatch">
-                                <label>Invalid credentials</label>
+                               <!-- <label>Invalid credentials</label> -->
                             </div>
-                            <div class="form-group formbox mb-3"> 
+                            <!-- <div class="form-group formbox mb-3"> 
                                 <input type="checkbox" name="rememberme" class="form-check-input" />
-                                <label class="dontre">Rmember me</label>
-                            </div>
+                                <label class="dontre">Remember me</label>
+                            </div> -->
                             <div class="form-check f_swi">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="chef">
                                 <label class="form-check-label labe" for="flexRadioDefault1">
