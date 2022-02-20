@@ -1,533 +1,537 @@
-*{
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    list-style: none;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
 }
 
-body{
-    background-color: #1b1616;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+body {
+  background-color: #1b1616;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-.navbar{
-    height: 125px;
+.navbar {
+  height: 125px;
 }
 
-.navbar-nav{
-    text-align: center;
+.navbar-nav {
+  text-align: center;
 }
 
-
-.navlogo{
-    margin-bottom: 12px;
+.navlogo {
+  margin-bottom: 12px;
 }
 
-.navlogo img{
-    width: 150px ;
-    height: 120px;
+.navlogo img {
+  width: 150px;
+  height: 120px;
 }
 
-.footerimg img{
-    width: 280px;
-    height: 300px;
-
+.footerimg img {
+  width: 280px;
+  height: 300px;
 }
 
-
-.ico{
-    text-align: center;
-    margin-right: 12px;
-    margin-left: 12px;
+.ico {
+  text-align: center;
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
-.navwrite{
-    margin-right: 12px;
-    margin-left: 12px;
+.navwrite {
+  margin-right: 12px;
+  margin-left: 12px;
 }
 
-.nav-item:hover{
-    background-color: indianred;
-    border-radius: 10px;
+.nav-item:hover {
+  background-color: indianred;
+  border-radius: 10px;
 }
-
-
 
 /* Navbar codes end here....*/
 
-
-.contents{
-    min-height: 510px;
+.contents {
+  min-height: 510px;
 }
 
 /* Footer Code starts from here.....*/
 
-.footer_wrapper{
-    align-items: flex-end;
+.footer_wrapper {
+  align-items: flex-end;
 }
 
-h1{
-    color: wheat;
+h1 {
+  color: wheat;
 }
 
-.footwrite{
-    text-decoration: none;
-    color: wheat;
-    
+.footwrite {
+  text-decoration: none;
+  color: wheat;
 }
 
-.footicons{
-    font-size: 30px;
+.footicons {
+  font-size: 30px;
 }
 
-.last{
-    color: tomato;
+.last {
+  color: tomato;
 }
-
 
 /*Register page codes start here.....*/
 
-.regcon{
-    padding-top: 20px;
+.regcon {
+  padding-top: 20px;
 }
 
+/*Admin page code here*/
+#Grid1 {
+  background: rgb(25, 28, 37);
+  padding: 20px;
+  margin: 20px;
+  margin-bottom: 30px;
+}
 
+#t1 {
+  padding: 10px;
+  color: #e9dcdc;
+}
 
+#t2 {
+  color: #e9dcdc;
+}
 
+.icon1 {
+  background: #aec5d3;
+  border: round;
+  width: 50px;
+  padding: 7px;
+  transform: translateY(-90%);
+}
 
+.title {
+  margin-bottom: 20px;
+  font-weight: bold;
+  padding: 20px;
+}
 
+.title2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
 
 /* Login Codes start from here..*/
 
-.rowbg{
-    margin-top: 5%;
-    background-color: black;
+.rowbg {
+  margin-top: 5%;
+  background-color: black;
 }
 
-.loginlog{
-    text-align: center;
+.loginlog {
+  text-align: center;
 }
 
-
-.loginlog img{
-    margin-top: 5%;
-    width: 50%;
+.loginlog img {
+  margin-top: 5%;
+  width: 50%;
 }
 
-.formbox{
-    padding-left:3%;
-    padding-right:3%;
+.formbox {
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
-.signup{
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
+.signup {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
 }
 
-.btn{
-    background-color: rgb(44, 141, 197);
-    width: 100%;
-    align-items: center;
+.btn {
+  background-color: rgb(44, 141, 197);
+  width: 100%;
+  align-items: center;
 }
-.frombuto{
-    justify-content: center;
-}
-
-.welcome{
-    color: blue;
-    font-size: 25px;
+.frombuto {
+  justify-content: center;
 }
 
-.dont{
-    color: #379683;
-    font-size: 20px;
+.welcome {
+  color: blue;
+  font-size: 25px;
 }
 
-.signupregi{
-    color: blue;
-    text-decoration: none;
-    font-size: 28px;
-    padding-left: 3%;
+.dont {
+  color: #379683;
+  font-size: 20px;
 }
 
-.formlabel{
-    color: #6132ee;
-    font-size: 20px;
+.signupregi {
+  color: blue;
+  text-decoration: none;
+  font-size: 28px;
+  padding-left: 3%;
 }
 
-.f_swi{
-    margin-left: 20px;
+.formlabel {
+  color: #6132ee;
+  font-size: 20px;
 }
 
-.labe{
-    color: #6132ee;
-    font-size: 20px;
+.f_swi {
+  margin-left: 20px;
 }
 
-
-.dontre{
-    color: #379683;
-    font-size: 18px;
+.labe {
+  color: #6132ee;
+  font-size: 20px;
 }
 
-
-.Formnames{
-    display: flex;
-    align-items: baseline;
+.dontre {
+  color: #379683;
+  font-size: 18px;
 }
 
-.fname{
-    margin-right: 10px;
-}
-.lname{
-    margin-left: 10px;
+.Formnames {
+  display: flex;
+  align-items: baseline;
 }
 
-.domatch{
-    color: blanchedalmond;
-    text-align: center;
+.fname {
+  margin-right: 10px;
+}
+.lname {
+  margin-left: 10px;
 }
 
-
-.slidedes{
-    background-color:black;
-    opacity:.7;
-    padding-bottom: 25px;
+.domatch {
+  color: blanchedalmond;
+  text-align: center;
 }
 
-.Slidehead{
-    padding-top: 30px;
-    padding-left: 20px;
-    font-size: 50px;
-    color: burlywood;
-    font-family: cursive;
+.slidedes {
+  background-color: black;
+  opacity: 0.7;
+  padding-bottom: 25px;
 }
 
-.Slidepara{
-    padding-top: 30px;
-    padding-left: 20px;
-    font-size: 22px;
-    padding-bottom: 20px;
-    color:red;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+.Slidehead {
+  padding-top: 30px;
+  padding-left: 20px;
+  font-size: 50px;
+  color: burlywood;
+  font-family: cursive;
 }
 
-
-.viewmore{
-    border: none;
-    width: 20%;
-    color: black;
-    background-color: darkgray;
-    font-size: 18px;
-    padding-top: 1.5%;
-    text-align: center;
-    align-items: baseline;
-    display: flex;
-    justify-content: center;
-    padding-left: 5px;
-    padding-right: 5px;
-    border-radius: 30px;
+.Slidepara {
+  padding-top: 30px;
+  padding-left: 20px;
+  font-size: 22px;
+  padding-bottom: 20px;
+  color: red;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.viewmore:hover{
-    color: lightgoldenrodyellow;
-    background-color: indianred;
+.viewmore {
+  border: none;
+  width: 20%;
+  color: black;
+  background-color: darkgray;
+  font-size: 18px;
+  padding-top: 1.5%;
+  text-align: center;
+  align-items: baseline;
+  display: flex;
+  justify-content: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 30px;
 }
 
-.arrow{
-    font-size:20px;
-    padding-left:5px;
-    display: block;
+.viewmore:hover {
+  color: lightgoldenrodyellow;
+  background-color: indianred;
 }
 
-.ordernow{
-    margin-left: 50px;
-    background-color: steelblue;
-}
-.orderarrow{
-    padding-left: 10px;
+.arrow {
+  font-size: 20px;
+  padding-left: 5px;
+  display: block;
 }
 
-
-.caroimg{
-    min-height: auto;
-    height: 800px;
+.ordernow {
+  margin-left: 50px;
+  background-color: steelblue;
+}
+.orderarrow {
+  padding-left: 10px;
 }
 
-
-.Items{
-    border-radius: 15px ;
+.caroimg {
+  min-height: auto;
+  height: 800px;
 }
 
-.row .menuall{
-    padding-top: 30px;
-    padding-bottom:30px;
+.Items {
+  border-radius: 15px;
 }
 
-.menuall img{
-    width:100%;
-    height: 50%;
-    border-radius: 15px;
+.row .menuall {
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
-.itemheading{
-    font-size:100%;
-    font-weight: bold;
-    padding-top: 5px;
-    padding-left: 10px;
-    color: wheat;
+.menuall img {
+  width: 100%;
+  height: 50%;
+  border-radius: 15px;
 }
 
-.itemdes{
-    font-size: 15px;
-    padding-right: 10px ;
-    padding-left: 10px;
-    color:lavender;
-
+.itemheading {
+  font-size: 100%;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-left: 10px;
+  color: wheat;
 }
 
-.addtocart{
-    display: flex;
-    border-style: none;
-    align-items: baseline;
-    justify-content: center;
-    background-color: black;
-    color: #86C232;
-    padding-top: 5%;
-    border-radius: 15px;
-    width: 100%;
-    font-size: 18px;
+.itemdes {
+  font-size: 15px;
+  padding-right: 10px;
+  padding-left: 10px;
+  color: lavender;
 }
 
-.addtocart:hover{
-    background:indianred;
-    color: ivory;
+.addtocart {
+  display: flex;
+  border-style: none;
+  align-items: baseline;
+  justify-content: center;
+  background-color: black;
+  color: #86c232;
+  padding-top: 5%;
+  border-radius: 15px;
+  width: 100%;
+  font-size: 18px;
 }
 
-.addalliconsp{
-    padding-left: 20px;
-    padding-right: 20px;
-    font-size: 15px;
-    color:rgb(167, 248, 235);
+.addtocart:hover {
+  background: indianred;
+  color: ivory;
 }
 
-.addall{
-    display: flex;
-    margin-left: 20%;
-    font-size: 15px;
-    align-items: baseline;
-
+.addalliconsp {
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 15px;
+  color: rgb(167, 248, 235);
 }
 
-.addallicons{
-    color: rgb(231, 218, 218);
+.addall {
+  display: flex;
+  margin-left: 20%;
+  font-size: 15px;
+  align-items: baseline;
 }
 
-.add{
-    display: flex;
+.addallicons {
+  color: rgb(231, 218, 218);
 }
 
-.minusplus{
-    background: none;
-    border: none;
-    padding-left: 5px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-right: 5px;
-    border-radius: 50%;
+.add {
+  display: flex;
 }
 
-.minusplus:hover{
-    background:indianred;
-    color: ivory;
+.minusplus {
+  background: none;
+  border: none;
+  padding-left: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 5px;
+  border-radius: 50%;
 }
 
-.food{
-    text-align: center;
-    font-weight: 900;
-    font-size: 50px;
-    padding-top: 10px;
-    color: wheat;
+.minusplus:hover {
+  background: indianred;
+  color: ivory;
 }
 
-
-.Reviewitems{
-    margin-top: 10%;
-    text-align: center;
+.food {
+  text-align: center;
+  font-weight: 900;
+  font-size: 50px;
+  padding-top: 10px;
+  color: wheat;
 }
 
-.Reviewitems i{
-    padding-top: 5%;
-    font-size: 18px;
-    color: tan;
-}
-.Reviewitems img{
-    width: 30%;
-    height:30%;
+.Reviewitems {
+  margin-top: 10%;
+  text-align: center;
 }
 
-.Reviewitemsname{
-    padding-top: 10px;
-    font-size: 25px;
-    color: #65CCB8;
+.Reviewitems i {
+  padding-top: 5%;
+  font-size: 18px;
+  color: tan;
+}
+.Reviewitems img {
+  width: 30%;
+  height: 30%;
 }
 
-.Reviewitemsdes{
-    font-size: 25px;
-    padding-bottom:25px;
-    padding-right:20px ;
-    padding-left: 20px;
-    color: tomato;
+.Reviewitemsname {
+  padding-top: 10px;
+  font-size: 25px;
+  color: #65ccb8;
 }
 
-.cheffall{
-    display: flex;
-    padding: 10px;
-    border-radius: 15px;
+.Reviewitemsdes {
+  font-size: 25px;
+  padding-bottom: 25px;
+  padding-right: 20px;
+  padding-left: 20px;
+  color: tomato;
 }
 
-.cheffdeatails{
-    margin-left: 10px;
-}
-.cheffname{
-    color: antiquewhite;
-    text-align: right;
-    font-size: 15px;
+.cheffall {
+  display: flex;
+  padding: 10px;
+  border-radius: 15px;
 }
 
-.cheffdes{
-    font-size: 18px;
-    color: coral;
+.cheffdeatails {
+  margin-left: 10px;
+}
+.cheffname {
+  color: antiquewhite;
+  text-align: right;
+  font-size: 15px;
 }
 
-.cheffall img{
-    width:50%;
-    height:80%;
-    border-radius:50%;
+.cheffdes {
+  font-size: 18px;
+  color: coral;
 }
 
-.visitmenu{
-    width: 100%;
-    border: none;
-    background: none;
-    color: #86C232;
-    border-radius: 20px;
-    text-align: center;
-    padding-top: 15px;
+.cheffall img {
+  width: 50%;
+  height: 80%;
+  border-radius: 50%;
 }
 
-.visitmenu:hover{
-    background-color: black;
+.visitmenu {
+  width: 100%;
+  border: none;
+  background: none;
+  color: #86c232;
+  border-radius: 20px;
+  text-align: center;
+  padding-top: 15px;
 }
 
+.visitmenu:hover {
+  background-color: black;
+}
 
 /*Index page codes end here...*/
 
-
-
 /* Chef's Exhibition Page Starts From here.....*/
 
-.cheffownprof{
-    display: flex;
-    padding-top: 12px;
+.cheffownprof {
+  display: flex;
+  padding-top: 12px;
 }
 
-
-.cheffownprof2 img{
-    width: 16%;
-    height:90%;
-    border-radius: 55%;
+.cheffownprof2 img {
+  width: 16%;
+  height: 90%;
+  border-radius: 55%;
 }
-
 
 .cheffownprof2 {
-    display: flex;
-    padding-top: 12px;
+  display: flex;
+  padding-top: 12px;
 }
 
-.cheffownprof img{
-    width: 18%;
-    height:100%;
-    border-radius: 55%;
+.cheffownprof img {
+  width: 18%;
+  height: 100%;
+  border-radius: 55%;
 }
 
-.cheffproname{
-    font-size: 35px;
-    text-align: left;
-    color:antiquewhite; 
-    font-style: italic;
+.cheffproname {
+  font-size: 35px;
+  text-align: left;
+  color: antiquewhite;
+  font-style: italic;
 }
 
-.addmore{
-    border: none;
-    width: 80%;
-    float: right;
-    text-align: center;
-    border-radius: 20px;
-    background-color: indianred;
-    font-size: 15px;
+.addmore {
+  border: none;
+  width: 80%;
+  float: right;
+  text-align: center;
+  border-radius: 20px;
+  background-color: indianred;
+  font-size: 15px;
 }
 
-.addmore:hover{
-    background-color: black;
-    color: #86C232;
+.addmore:hover {
+  background-color: black;
+  color: #86c232;
 }
 
-.chefna{
-    text-align: center;
-    color: burlywood;
-    font-size: 35px;
+.chefna {
+  text-align: center;
+  color: burlywood;
+  font-size: 35px;
 }
 
-
-.delitem{
-    border: none;
-    width:20%;
-    float: right;
-    text-align: center;
-    border-radius: 20px;
-    background-color: indianred;
-    font-size: 15px;
+.delitem {
+  border: none;
+  width: 20%;
+  float: right;
+  text-align: center;
+  border-radius: 20px;
+  background-color: indianred;
+  font-size: 15px;
 }
 
-.delitem:hover{
-    background-color: black;
-    color: #86C232;
+.delitem:hover {
+  background-color: black;
+  color: #86c232;
 }
 
 /* Chef's Exhibition Page ends here.....*/
 
-
-
 .upload {
-    width: 150px;
-    position: relative;
-    margin: 50px 220px auto auto;
+  width: 150px;
+  position: relative;
+  margin: 50px 220px auto auto;
+}
 
-  }
-  
-  .upload img {
-    border-radius: 5%;
-    border: 6px solid #eaeaea;
-  }
-  
-  .upload .round {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: #00b4ff;
-    width: 32px;
-    height: 32px;
-    line-height: 33px;
-    overflow: hidden;
-    border-radius: 50%;
-    text-align: center;
-  }
-  
-  .upload .round input[type="file"] {
-    position: absolute;
-    transform: scale(2);
-    opacity: 0;
-  }
+.upload img {
+  border-radius: 5%;
+  border: 6px solid #eaeaea;
+}
+
+.upload .round {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #00b4ff;
+  width: 32px;
+  height: 32px;
+  line-height: 33px;
+  overflow: hidden;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.upload .round input[type="file"] {
+  position: absolute;
+  transform: scale(2);
+  opacity: 0;
+}

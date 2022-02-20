@@ -30,12 +30,12 @@ body {
   margin-left: 12px;
 }
 
-.navlogo{
+.navlogo {
   margin-bottom: 12px;
 }
 
-.navlogo img{
-  width: 150px ;
+.navlogo img {
+  width: 150px;
   height: 120px;
 }
 .nav-item:hover {
@@ -62,7 +62,7 @@ body {
 .ordertable {
   text-align: center;
   box-shadow: 0 5px 10px grey;
-  color: rgb(255, 255, 255);
+  color: rgb(250, 193, 193);
 }
 
 .totalbox {
@@ -96,7 +96,7 @@ th {
   text-align: left;
 }
 
-.footerimg img{
+.footerimg img {
   width: 280px;
   height: 300px;
 }
