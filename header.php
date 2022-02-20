@@ -15,50 +15,68 @@
                     <a class="nav-link navwrite" aria-current="page" href="Index.php">Home</a>
                   </li>
 
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                     <a class="nav-link navwrite" href="Menu.php">Menu</a>
                   </li>
 
                   <li class="nav-item">
                     <a class="nav-link navwrite" href="#">Order</a>
-                  </li>
+                  </li> -->
                   <?php 
                       if(isset($_SESSION['ID'])){
+                        // if($_SESSION['type']=="chef"){
+                        //   echo "<li class='nav-item'><a class='nav-link navwrite' href='ChefProfile.php'>Profile</a></li>";
+                          //echo "<li class='nav-item'><a class='nav-link' href='logOut.php'><i class='fas fa-sign-out-alt ico'></i></a></li>";
+                        // }elseif($_SESSION['type']=="customer"){
+                        //   echo "<li class='nav-item'><a class='nav-link navwrite' href='CustomerProfile.php'>Profile</a></li>";
+                          //echo "<li class='nav-item'><a class='nav-link' href='logOut.php'><i class='fas fa-sign-out-alt ico'></i></a></li>";
+                        // }
+                        echo "<li class='nav-item'><a class='nav-link navwrite' href='Menu.php'>Menu</a>
+                      </li>
+                      <li class='nav-item'><a class='nav-link navwrite' href='#'>Order</a>
+                      </li>";
+                      }
+                      // else{
+                      //    echo "<li class='nav-item'><a class='nav-link navwrite' href='Register.php'>Register</a></li>";
+                      //    echo "<li class='nav-item'><a class='nav-link navwrite' href='Login.php'>Login</a></li>";
+                         
+                      // }
+                  ?>
+                  
+
+                  <!-- <li class="nav-item">
+                    <a class="nav-link navwrite" href="#">About</a>
+                  </li> -->
+
+                  <li class="nav-item">
+                    <a class="nav-link navwrite" href="#">Contact Us</a>
+                  </li>
+                  <!-- <li class="nav-item">
+                    <a class="nav-link navwrite" href="#">Devs Corner</a>
+                  </li> -->
+                </ul>
+                <ul class="navbar-nav  " style="float:right !important">
+                      <?php 
+                      if(isset($_SESSION['ID'])){
+                        echo "<li class='nav-item'><a class='nav-link' href='#'><i class='fas fa-shopping-cart icons ico'></i></a></li>";
                         if($_SESSION['type']=="chef"){
-                          echo "<li class='nav-item'><a class='nav-link navwrite' href='ChefProfile.php'>Profile</a></li>";
+                          echo "<li class='nav-item'><a class='nav-link navwrite' href='ChefProfile.php'><i class='fas fa-user ico'></i></a></li>";
                           //echo "<li class='nav-item'><a class='nav-link' href='logOut.php'><i class='fas fa-sign-out-alt ico'></i></a></li>";
                         }elseif($_SESSION['type']=="customer"){
-                          echo "<li class='nav-item'><a class='nav-link navwrite' href='CustomerProfile.php'>Profile</a></li>";
+                          echo "<li class='nav-item'><a class='nav-link navwrite' href='CustomerProfile.php'><i class='fas fa-user ico'></i></a></li>";
                           //echo "<li class='nav-item'><a class='nav-link' href='logOut.php'><i class='fas fa-sign-out-alt ico'></i></a></li>";
-                        } 
-                        
+                        }
+                        echo "<li class='nav-item'><a class='nav-link' href='logOut.php'><i class='fas fa-sign-out-alt ico'></i></a></li>" ;                        
                       }else{
                          echo "<li class='nav-item'><a class='nav-link navwrite' href='Register.php'>Register</a></li>";
                          echo "<li class='nav-item'><a class='nav-link navwrite' href='Login.php'>Login</a></li>";
                          
                       }
                   ?>
-                  
-
-                  <li class="nav-item">
-                    <a class="nav-link navwrite" href="#">About</a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link navwrite" href="#">Contact Us</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link navwrite" href="#">Devs Corner</a>
-                  </li>
-                </ul>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-shopping-cart icons ico"></i></a>
-                      </li>
-                      <li class="nav-item">
+                      <!-- <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-user ico"></i></a>
-                      </li>
-                      <li class='nav-item'><a class='nav-link' href='logOut.php'><i class='fas fa-sign-out-alt ico'></i></a></li>
+                      </li> -->
+                      <!-- <li class='nav-item'><a class='nav-link' href='logOut.php'><i class='fas fa-sign-out-alt ico'></i></a></li> -->
                </ul>
               </div>
             </div>

@@ -2,7 +2,12 @@
   session_start();
   include("connect.php");
   include("functions.php");
-  
+  $itemsql =  "SELECT * FROM item ORDER BY RAND() LIMIT 4";
+  $itemresults = mysqli_query($link,$itemsql);
+  $chefsql = "SELECT * FROM chef ORDER BY RAND() LIMIT 3";
+  $chefresults = mysqli_query($link,$chefsql);
+  $reviewsql = "SELECT * From reviews r join  item i  on  r.ItemID=i.ItemID join customer c on r.CustomerID=c.CustID ORDER BY RAND() LIMIT 3";
+  $reviewresult = mysqli_query($link,$reviewsql);
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +27,7 @@
         <link type="text/css" rel="stylesheet" href="css/DeStylesheet.css"/>
     
     
-        <title>Desh-eats_Home_Page</title>
+        <title>Deshi-eats_Home_Page</title>
 
     </head>
 
@@ -100,14 +105,17 @@
 
             <div class="container">
               <div class="row">
+                <?php
+                while($row = mysqli_fetch_assoc($itemresults))
+                {?>
                   <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall">
                       <div class="Items">
-                          <img src="images/Menu/Mushroomburger1.jpg">
+                          <img src="<?php echo $row["ItemImage"] ?>">
                               <div class="allthings">
-                                      <p class="itemheading">Ham Burger<p>
-                                      <p class="itemdes">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam perspiciatis doloribus o</p>
+                                      <p class="itemheading"><?php echo $row["ItemName"] ?><p>
+                                      <p class="itemdes"><?php echo $row["ShortDescription"] ?></p>
                                       <div class="add">
-                                          <p class="addalliconsp">200.00/=</p>
+                                          <p class="addalliconsp"><?php echo $row["Price"] ?>/=</p>
                                               <div class="addall">
                                                 <button class="minusplus">
                                                   <i class="addallicons fas fa-minus quantity"></i>
@@ -125,7 +133,10 @@
                               </div>
                       </div>
                   </div>
-                  <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall">
+                  <?php
+                }
+                ?>
+                  <!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall">
                     <div class="Items">
                         <img src="images/Menu/Food10.jpg">
                             <div class="allthings">
@@ -199,12 +210,14 @@
                                 </button>
                         </div>
                 </div>
-            </div>
-
-              <button class="viewmore">
+            </div> -->
+                <a href="Menu.php" style="text-decoration: none;">
+                <button class="viewmore">
                    <p class="">VIEW MORE</p>
                   <i class="fas fa-long-arrow-alt-right arrow"></i>
               </button>
+                </a>
+              
 
           </div>
 
@@ -213,18 +226,26 @@
             <p class="food mb-5">Our expert cheffs</p>
 
             <div class="row">
+              <?php
+              while($row = mysqli_fetch_assoc($chefresults))
+              {?>
               <div class=" col-sm-6 col-md-6 col-lg-4 col-xl-4 cheffall">
-                <img src="images/Menu/food2.jpg">
+                <img src="<?php echo $row["ChefImage"] ?>">
                   <div class="cheffdeatails ml-31">
-                      <p class="cheffname">Gerron Hurt<p>
-                      <p class="cheffdes">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam perspiciatis doloribus o</p>
+                      <p class="cheffname"><?php echo $row["ChefName"] ?><p>
+                      <p class="cheffdes"><?php echo $row["ChefDescription"] ?></p>
+                      <a style="text-decoration: none;">
                       <button class="visitmenu">
                         <p>Visit Menu-></p>
                       </button>
+                      </a>
+                      
                   </div>
                </div>
-  
-               <div class=" col-sm-6 col-md-6 col-lg-4 col-xl-4 cheffall">
+               <?php
+              }
+              ?>
+               <!-- <div class=" col-sm-6 col-md-6 col-lg-4 col-xl-4 cheffall">
                 <img src="images/Menu/food2.jpg">
                   <div class="cheffdeatails ml-31">
                       <p class="cheffname">Courtney Lapresi<p>
@@ -244,7 +265,7 @@
                         <p>Visit Menu-></p>
                       </button>
                   </div>
-               </div>
+               </div> -->
             </div>
 
           </div>
@@ -252,14 +273,20 @@
           <div class="container">
             <p class="food mt-5">What our customers say !!!!!</p>
               <div class="row">
+                <?php
+                while($row = mysqli_fetch_assoc($reviewresult))
+                {?>
                   <div class="col-xl-4">
                       <div class="Reviewitems">
-                          <img src="images/Menu/Food12.jpg" class="rounded-circle">
-                          <p class="Reviewitemsname">Suzana</p>
-                          <p class="Reviewitemsdes">"Burger khamu..."</p>
+                          <img src="<?php echo $row["ItemImage"] ?>" class="rounded-circle">
+                          <p class="Reviewitemsname"><?php echo $row["CustName"] ?></p>
+                          <p class="Reviewitemsdes"><?php echo $row["Message"] ?></p>
                       </div>
                   </div>
-                  <div class="col-xl-4">
+                  <?php
+                }
+                ?>
+                  <!-- <div class="col-xl-4">
                       <div class="Reviewitems">
                           <img src="images/Menu/Food10.jpg" class="rounded-circle">
                           <p class="Reviewitemsname">Sanjay Mondol</p>
@@ -272,7 +299,7 @@
                           <p class="Reviewitemsname">Sanjay Mondol</p>
                           <p class="Reviewitemsdes">"Halar putera bal banay amrrrr......."</p>
                       </div>
-                  </div>
+                  </div> -->
               </div>
           </div>
 
