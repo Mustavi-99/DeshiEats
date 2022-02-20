@@ -536,33 +536,33 @@ h1 {
   opacity: 0;
 }
 
-.productimg img{ 
-      height: 480px;
-      width: 480px;
-      border-radius: 20px;
-  }
+.productimg img {
+  height: 480px;
+  width: 480px;
+  border-radius: 20px;
+}
 
-  .quan{
-      margin-right: 70px;
-      color:rgb(167, 248, 235);
-  }
+.quan {
+  margin-right: 70px;
+  color: rgb(167, 248, 235);
+}
 
-  .ppall{
-      display: flex;
-      align-items: baseline;
-  }
+.ppall {
+  display: flex;
+  align-items: baseline;
+}
 
-  .prepared{
-      text-align: right;
-      font-weight: bold;
-      color: wheat;
-  }
+.prepared {
+  text-align: right;
+  font-weight: bold;
+  color: wheat;
+}
 
-  .allpwrite{
-      font-size: 20px;   
-  }
+.allpwrite {
+  font-size: 20px;
+}
 
-  .simbg{
-      background-color: black;
-      border-radius: 30px;
-  }
+.simbg {
+  background-color: black;
+  border-radius: 30px;
+}

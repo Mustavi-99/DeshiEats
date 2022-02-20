@@ -56,7 +56,7 @@ $resultItem = mysqli_query($link, $sqlItem);
       <div class="row mt-5">
         <div class="col-12 cheffownprof">
           <?php
-          if (empty($row["ChefImage"])) {
+          if (!empty($row["ChefImage"])) {
           ?>
             <img src="<?php echo $row["ChefImage"] ?>" width=150 height=150 alt="">
           <?php
