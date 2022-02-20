@@ -121,12 +121,14 @@
                 {?>
                   <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall">
                       <div class="Items">
+                      <a href="ProductPage.php?ProductID=<?php echo $row["ItemID"]?>" style="text-decoration: none;">
                           <img src="<?php echo $row["ItemImage"] ?>">
                               <div class="allthings">
                                       <p class="itemheading"><?php echo $row["ItemName"] ?><p>
                                       <p class="itemdes"><?php echo $row["ShortDescription"] ?></p>
                                       <div class="add">
                                           <p class="addalliconsp"><?php echo $row["Price"] ?>/=</p>
+                </a>
                                               <div class="addall">
                                                 <button class="minusplus">
                                                   <i class="addallicons fas fa-minus quantity"></i>

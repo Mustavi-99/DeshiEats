@@ -1,3 +1,38 @@
+<?php
+session_start();
+include("connect.php");
+if(isset($_SESSION["ID"])){
+  if(!isset($_GET["ProductID"])){
+    if($_SESSION["type"] == "customer"){
+      ?>
+      <script type="text/javascript">
+        window.location.href = "Menu.php"
+      </script>
+    <?php
+    }
+    else{
+      ?>
+    <script type="text/javascript">
+      window.location.href = "Chef'sExhibition.php"
+    </script>
+  <?php
+    }
+  }
+}else {
+  ?>
+    <script type="text/javascript">
+      alert("User needs to be logged In");
+      window.location.href = "Login.php"
+    </script>
+  <?php
+  }
+  $sql= "SELECT * FROM item WHERE ItemID=".$_GET["ProductID"];
+  $result = mysqli_query($link,$sql);
+  $row = mysqli_fetch_assoc($result);
+  $sqlOwner = "SELECT * FROM chef WHERE ChefID=".$row["OwnerID"];
+  $resultOwner = mysqli_query($link,$sqlOwner);
+  $rowOwner = mysqli_fetch_assoc($resultOwner);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,14 +62,16 @@
             <div class="container">
                 <div class="row m-5 simbg p-2">
                     <div class="col-lg-5 .col-md-5 .col-sm-5 .col-xs-12 productimg">
-                        <img src="images/Menu/Food12.jpg">
+                        <img src="<?php echo $row["ItemImage"] ?>">
                     </div>
                     <div class="col-lg-7 .col-md-7 .col-sm-7 .col-sm-12">
                         <div class="m-2 pt-4">
-                            <p class="itemheading allpwrite">Product Name</p>
-                            <p class="itemdes allpwrite">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo repellendus nihil necessitatibus eius illo reiciendis aliquid voluptatem doloremque rerum modi impedit dolorum omnis, quia ea numquam officia cupiditate nostrum aspernatur.</p>
-                            <p class="addalliconsp allpwrite">Product Price</p>
-                            <p class="prepared allpwrite">Prepared by ChefName</p>
+                            <p class="itemheading allpwrite"><?php echo $row["ItemName"] ?></p>
+                            <p class="itemdes allpwrite"><?php echo $row["Description"] ?></p>
+                            <p class="addalliconsp allpwrite"><?php echo $row["Price"] ?>/=</p>
+                            <a href="CustomerChefView.php?chefID=<?php echo $row["OwnerID"]?>" style="text-decoration: none;">
+                            <p class="prepared allpwrite">Prepared by <?php  echo $rowOwner["ChefName"]?></p>
+                            </a>
                             <div class="ppall">
                                 <p class="quan allpwrite addalliconsp">Quantity</p>
                                 <button class="minusplus">

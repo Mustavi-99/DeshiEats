@@ -51,7 +51,6 @@ $resultItem = mysqli_query($link,$sqlItem);
       ?>
       
           <div class="contents">
-
             <div class="container">
                 <div class="row mt-5">
                     <div class="col-12 cheffownprof">
@@ -66,7 +65,7 @@ $resultItem = mysqli_query($link,$sqlItem);
         }
         ?>
                           <div class="cheffdeatails ml-31">
-                              <p class="cheffproname"><?php echo $row["ChefName"] ?><p>
+                              <p class="cheffproname"><?php echo $row["ChefName"] ?></p>
                               <p class="cheffdes"><?php echo $row["ChefDescription"] ?></p>
                               <button class="addmore">
                                 <p class="pt-3 afi">+ Add more food items</p>
@@ -90,7 +89,7 @@ $resultItem = mysqli_query($link,$sqlItem);
                                         <p class="itemdes"><?php echo $rowItem["ShortDescription"] ?></p>
                                         <div class="add">
                                             <p class="addalliconsp"><?php echo $rowItem["Price"] ?>/=</p>
-                                                <div class="addall">
+                                                <!-- <div class="addall">
                                                   <button class="minusplus">
                                                     <i class="addallicons fas fa-minus quantity"></i>
                                                   </button>
@@ -98,12 +97,12 @@ $resultItem = mysqli_query($link,$sqlItem);
                                                     <button class="minusplus">
                                                       <i class="addallicons fas fa-plus"></i>
                                                     </button>
-                                                </div>
+                                                </div> -->
                                         </div>
-                                        <button class="addtocart">
+                                        <!-- <button class="addtocart">
                                           <p class="">ADD TO CART</p>
                                           <i class="fas fa-shopping-cart"></i>
-                                        </button>
+                                        </button> -->
                                 </div>
                         </div>
                     </div>

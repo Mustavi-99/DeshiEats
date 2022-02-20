@@ -67,11 +67,12 @@ if (isset($_SESSION["ID"])) {
 
           <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall">
             <div class="Items">
+            <a href="ProductPage.php?ProductID=<?php echo $row["ItemID"]?>" style="text-decoration: none;">
               <img src="<?php echo $row["ItemImage"] ?>">
               <div class="allthings">
-                <p class="itemheading"><?php echo $row["ItemName"] ?>
-                <p>
+                <p class="itemheading"><?php echo $row["ItemName"] ?></p>
                 <p class="itemdes"><?php echo $row["ShortDescription"] ?></p>
+                </a>
                 <div class="add">
                   <p class="addalliconsp"><?php echo $row["Price"] ?>/=</p>
                   <div class="addall">

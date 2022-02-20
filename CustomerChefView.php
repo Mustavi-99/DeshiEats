@@ -1,3 +1,40 @@
+<?php
+session_start();
+include("connect.php");
+if(isset($_SESSION["ID"])){
+  if(!isset($_GET["chefID"])){
+    if($_SESSION["type"] == "chef"){
+      ?>
+    <script type="text/javascript">
+      alert("Invalid User");
+      window.location.href = "Chef'sExhibition.php"
+    </script>
+  <?php
+    }
+    else{
+      ?>
+    <script type="text/javascript">
+      alert("Invalid User");
+      window.location.href = "Menu.php"
+    </script>
+  <?php
+    }
+  }
+}else {
+  ?>
+    <script type="text/javascript">
+      alert("User needs to be logged In");
+      window.location.href = "Login.php"
+    </script>
+  <?php
+  }
+  $sql = "SELECT * FROM chef where ChefID=".$_GET["chefID"];
+$result = mysqli_query($link,$sql);
+$row = mysqli_fetch_assoc($result);
+
+$sqlItem = "SELECT * FROM item where OwnerID=".$_GET["chefID"];
+$resultItem = mysqli_query($link,$sqlItem);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,10 +68,19 @@
             <div class="container">
                 <div class="row mt-5">
                     <div class="col-12 cheffownprof2">
-                        <img src="images/Menu/food2.jpg" height = 150 width = 150>
-                          <div class="cheffdeatails ml-31">
-                              <p class="cheffproname">Gerron Hurt<p>
-                              <p class="cheffdes">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam perspiciatis doloribus o</p>
+                    <?php
+        if(isset($row["ChefImage"])){
+          ?>
+          <img src="<?php echo $row["ChefImage"] ?>" width=150 height=150 alt="">
+          <?php
+        }else{?>
+<img src="images/profile.png" width=150 height=150 alt="">
+<?php
+        }
+        ?>
+                            <div class="cheffdeatails ml-31">
+                              <p class="cheffproname"><?php echo $row["ChefName"] ?></p>
+                              <p class="cheffdes"><?php echo $row["ChefDescription"] ?></p>
                             </div>
                     </div>
                 </div>
@@ -43,7 +89,38 @@
             <div class="container">
                 <p class="mt-1 chefna">I'm offering....</p>
                 <div class="row">
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall">
+                <?php
+                  while($rowItem = mysqli_fetch_assoc($resultItem) ){
+                    ?>
+<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall">
+                        <div class="Items">
+                            <img src="<?php echo $rowItem["ItemImage"] ?>">
+                                <div class="allthings">
+                                        <p class="itemheading"><?php echo $rowItem["ItemName"] ?><p>
+                                        <p class="itemdes"><?php echo $rowItem["ShortDescription"] ?></p>
+                                        <div class="add">
+                                            <p class="addalliconsp"><?php echo $rowItem["Price"] ?>/=</p>
+                                                <div class="addall">
+                                                  <button class="minusplus">
+                                                    <i class="addallicons fas fa-minus quantity"></i>
+                                                  </button>
+                                                    <p class="addalliconsp">1</p>
+                                                    <button class="minusplus">
+                                                      <i class="addallicons fas fa-plus"></i>
+                                                    </button>
+                                                </div>
+                                        </div>
+                                        <button class="addtocart">
+                                          <p class="">ADD TO CART</p>
+                                          <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                </div>
+                        </div>
+                    </div>
+                    <?php
+                  }
+                  ?>
+                    <!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall">
                         <div class="Items">
                             <img src="images/Menu/Mushroomburger1.jpg">
                                 <div class="allthings">
@@ -142,7 +219,7 @@
                                   </button>
                           </div>
                   </div>
-              </div>
+              </div> -->
             </div>
   
           </div>
