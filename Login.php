@@ -89,7 +89,7 @@
                                 <input type="password" placeholder="Enter your password" name="userpassword" value="" class="form-control" />
                             </div>
                             <div class="domatch">
-                                <label>Invalid credentials</label>
+                               <!-- <label>Invalid credentials</label> -->
                             </div>
                             <!-- <div class="form-group formbox mb-3"> 
                                 <input type="checkbox" name="rememberme" class="form-check-input" />

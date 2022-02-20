@@ -38,7 +38,7 @@
         <link type="text/css" rel="stylesheet" href="css/DeStylesheet.css"/>
     
     
-        <title>Deshi-eats_Home_Page</title>
+        <title>DeshiEats Home</title>
 
     </head>
 
@@ -60,9 +60,9 @@
                     <div class="container carousel-caption d-block d-md-block">
                         <div class="row">
                             <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-8 slidedes">
-                                <p class="Slidehead">What We provide??</p>
-                                <p class="Slidepara">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta blanditiis temporibus recusandae ab dignissimos earum accusamus perspiciatis ratione eveniet officia vero. Ut natus ad dolore consectetur. Explicabo, accusantium maxime?</p>
-                                <div class=" viewmore ordernow">
+                                <p class="Slidehead">Welcome to DeshiEats</p>
+                                <p class="Slidepara">Here you get to taste authentic cuisines of every region of Bangladesh and share the love for home-cooked meals just in one platform!</p>
+								<div class=" viewmore ordernow">
                                     <p class="">ORDER NOW</p>
                                     <i class="fas fa-long-arrow-alt-right orderarrow"></i>
                                 </div>
@@ -75,8 +75,8 @@
                 <div class="container carousel-caption d-block d-md-block">
                     <div class="row">
                         <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-8 slidedes">
-                            <p class="Slidehead">WHY US??</p>
-                            <p class="Slidepara">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta blanditiis temporibus recusandae ab dignissimos earum accusamus perspiciatis ratione eveniet officia vero. Ut natus ad dolore consectetur. Explicabo, accusantium maxime?</p>
+                            <p class="Slidehead">Own a Kitchen Today!</p>
+                            <p class="Slidepara">Would you like millions of new customers to enjoy your amazing food? So would we! It's simple: we list your menu online, help you process orders, pick them up, and deliver them in a heartbeat! You prepare the food, we handle the rest!</p>
                             <div class="viewmore ordernow">
                                 <p class="">ORDER NOW</p>
                                 <i class="fas fa-long-arrow-alt-right orderarrow"></i>
@@ -91,7 +91,7 @@
                 <div class="row">
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-8 slidedes">
                         <p class="Slidehead">Best Service at your doorstep...</p>
-                        <p class="Slidepara">Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, soluta blanditiis temporibus recusandae ab dignissimos earum accusamus perspiciatis ratione eveniet officia vero. Ut natus ad dolore consectetur. Explicabo, accusantium maxime?</p>
+                        <p class="Slidepara">Order food online the easy way with DeshiEats. Whether you're too tired to cook, craving fast food favourites or looking to try different cuisines, we will deliver them to your doorstep in a heartbeat! </p>
                         <div class=" viewmore ordernow">
                             <p class="">ORDER NOW</p>
                             <i class="fas fa-long-arrow-alt-right orderarrow"></i>
