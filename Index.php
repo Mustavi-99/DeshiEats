@@ -234,7 +234,7 @@
 
           <div class="container">
 
-            <p class="food mb-5">Our expert cheffs</p>
+            <p class="food mb-5">Our Expert Chefs</p>
 
             <div class="row">
               <?php
