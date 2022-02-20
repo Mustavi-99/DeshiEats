@@ -90,7 +90,7 @@
             <div class="container carousel-caption d-block d-md-block">
                 <div class="row">
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-8 slidedes">
-                        <p class="Slidehead">Best Service at your doorstep...</p>
+                        <p class="Slidehead">Best Service at your Doorstep...</p>
                         <p class="Slidepara">Order food online the easy way with DeshiEats. Whether you're too tired to cook, craving fast food favourites or looking to try different cuisines, we will deliver them to your doorstep in a heartbeat! </p>
                         <div class=" viewmore ordernow">
                             <p class="">ORDER NOW</p>
@@ -282,7 +282,7 @@
           </div>
 
           <div class="container">
-            <p class="food mt-5">What our customers say !!!!!</p>
+            <p class="food mt-5">What our Customers Say</p>
               <div class="row">
                 <?php
                 while($row = mysqli_fetch_assoc($reviewresult))
