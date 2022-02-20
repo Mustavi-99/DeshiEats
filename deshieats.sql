@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2022 at 09:00 AM
+-- Generation Time: Feb 20, 2022 at 12:39 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.23
 
@@ -58,7 +58,6 @@ CREATE TABLE `chef` (
 --
 
 INSERT INTO `chef` (`ChefID`, `ChefName`, `ChefEmail`, `ChefPassword`, `ChefContactNumber`, `ChefDescription`, `ChefAddress`, `ChefArea`, `ChefImage`) VALUES
-(1, 'New-Chef', 'reaperj42@gmail.com', '123456', 1552321408, 'About Chef', 'Chef/Company Address', 'Chef/Company area', 'Chef Image'),
 (2, 'Homely Chinese', 'xyz@gmail.com', '123456', 1, 'Whether you want Fried rice or a banquet with spectacular Chinese food, We serve them all in Homely ', 'abc', 'abc', 'images/DeshiEatsMenu/HomelyChinese/Cover.jpg'),
 (3, 'Food Tong', 'xyz@gmail.com', '123456', 1, 'Craving light snacks? At our Food Tong, we offer a variety of Bengali snacks prepared in the healthi', 'abc', 'abc', 'images/DeshiEatsMenu/FoodTong/Cover.jpg'),
 (4, 'Ghorowa Shaad', 'xyz@gmail.com', '123456', 1, 'Ghorowa Shaad brings authentic Bengali homemade dishes to your doorstep! ', 'abc', 'abc', 'images/DeshiEatsMenu/GhorowaShaad/Cover.jpeg'),

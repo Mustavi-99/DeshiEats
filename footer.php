@@ -27,7 +27,7 @@
                     <a class="footwrite" href="#">Devs Corner</a>
                   </p>
                   <p>
-                    <a class="footwrite" href="#">Contact Us</a>
+                    <a class="footwrite" href="Contact.php">Contact Us</a>
                   </p>
                 </div>
                 <div class="col-md-4 text-center">
