@@ -292,6 +292,17 @@
                           <img src="<?php echo $row["ItemImage"] ?>" class="rounded-circle">
                           <p class="Reviewitemsname"><?php echo $row["CustName"] ?></p>
                           <p class="Reviewitemsdes"><?php echo $row["Message"] ?></p>
+                          <p class="">
+                      <?php
+                      for ($i = 1; $i <= 5; $i++) {
+                        if ($i <= $row["Rating"]) {
+                          echo "<i class='fa fa-star text-warning'></i>";
+                        } else {
+                          echo "<i class='fa fa-star text-secondary'></i>";
+                        }
+                      }
+                      ?>
+
                       </div>
                   </div>
                   <?php

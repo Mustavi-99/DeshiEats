@@ -1,5 +1,30 @@
 <?php
 session_start();
+include("connect.php");
+if(isset($_SESSION["ID"])){
+  if($_SESSION["type"]=="customer"){
+    ?>
+      <script type="text/javascript">
+        alert("Invalid user");
+        window.location.href = "Index.php"
+      </script>
+     <?php 
+  }
+}else{
+  ?>
+<script type="text/javascript">
+  alert("User needs to be logged In");
+  window.location.href = "Login.php"
+</script>
+<?php
+}
+$sql = "SELECT * FROM chef where ChefID=".$_SESSION["ID"];
+$result = mysqli_query($link,$sql);
+$row = mysqli_fetch_assoc($result);
+
+$sqlItem = "SELECT * FROM item where OwnerID=".$_SESSION["ID"];
+$resultItem = mysqli_query($link,$sqlItem);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,9 +34,7 @@ session_start();
         <meta name="viewport" content="width=device-width, initial-scale=1">
     
         <!-- Bootstrap CSS -->
-    
-
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
@@ -32,10 +55,19 @@ session_start();
             <div class="container">
                 <div class="row mt-5">
                     <div class="col-12 cheffownprof">
-                        <img src="images/Menu/food2.jpg">
+                    <?php
+        if(isset($row["ChefImage"])){
+          ?>
+          <img src="<?php echo $row["ChefImage"] ?>" width=150 height=150 alt="">
+          <?php
+        }else{?>
+<img src="images/profile.png" width=150 height=150 alt="">
+<?php
+        }
+        ?>
                           <div class="cheffdeatails ml-31">
-                              <p class="cheffproname">Gerron Hurt<p>
-                              <p class="cheffdes">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam perspiciatis doloribus o</p>
+                              <p class="cheffproname"><?php echo $row["ChefName"] ?><p>
+                              <p class="cheffdes"><?php echo $row["ChefDescription"] ?></p>
                               <button class="addmore">
                                 <p class="pt-3 afi">+ Add more food items</p>
                               </button>
@@ -47,14 +79,17 @@ session_start();
             <div class="container">
                 <p class="mt-2 chefna">I'm offering....</p>
                 <div class="row">
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall">
+                  <?php
+                  while($rowItem = mysqli_fetch_assoc($resultItem) ){
+                    ?>
+<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall">
                         <div class="Items">
-                            <img src="images/Menu/Mushroomburger1.jpg">
+                            <img src="<?php echo $rowItem["ItemImage"] ?>">
                                 <div class="allthings">
-                                        <p class="itemheading">Ham Burger<p>
-                                        <p class="itemdes">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam perspiciatis doloribus o</p>
+                                        <p class="itemheading"><?php echo $rowItem["ItemName"] ?><p>
+                                        <p class="itemdes"><?php echo $rowItem["ShortDescription"] ?></p>
                                         <div class="add">
-                                            <p class="addalliconsp">200.00/=</p>
+                                            <p class="addalliconsp"><?php echo $rowItem["Price"] ?>/=</p>
                                                 <div class="addall">
                                                   <button class="minusplus">
                                                     <i class="addallicons fas fa-minus quantity"></i>
@@ -72,7 +107,11 @@ session_start();
                                 </div>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall">
+                    <?php
+                  }
+                  ?>
+                    
+                    <!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall">
                       <div class="Items">
                           <img src="images/Menu/Food10.jpg">
                               <div class="allthings">
@@ -146,7 +185,7 @@ session_start();
                                   </button>
                           </div>
                   </div>
-              </div>
+              </div> -->
 
               <button class="delitem mb-4">
                 <p class="pt-3 afi"> - Delete Item</p>
