@@ -82,12 +82,12 @@
                
                $_SESSION["ID"]=$userExists["ChefID"];
                $_SESSION["type"]=$type;
-               echo "<script>window.location.href='index.php?$_SESSION[ID]';</script>";
+               ?><script>window.location.href="Chef'sExhibition.php";</script><?php
            
             }elseif($type=="customer"){
                $_SESSION["ID"]=$userExists["CustID"];
                $_SESSION["type"]=$type;
-               echo "<script>window.location.href='index.php?$_SESSION[ID]';</script>";
+               echo "<script>window.location.href='index.php';</script>";
             }
 
         }

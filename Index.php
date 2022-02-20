@@ -8,6 +8,17 @@
   $chefresults = mysqli_query($link,$chefsql);
   $reviewsql = "SELECT * From reviews r join  item i  on  r.ItemID=i.ItemID join customer c on r.CustomerID=c.CustID ORDER BY RAND() LIMIT 3";
   $reviewresult = mysqli_query($link,$reviewsql);
+  if (isset($_SESSION["ID"])) {
+    if($_SESSION['type']=="chef"){
+      ?>
+      <script type="text/javascript">
+        alert("Invalid user");
+        window.location.href = "Chef'sExhibition.php"
+      </script>
+     <?php 
+    }
+  }
+  
 ?>
 
 <!DOCTYPE html>
