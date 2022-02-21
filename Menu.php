@@ -3,25 +3,39 @@ session_start();
 include("connect.php");
 include("functions.php");
 if (isset($_SESSION["ID"])) {
-  if($_SESSION["type"]=="customer"){
+  if ($_SESSION["type"] == "customer") {
     $sql = "SELECT * FROM item";
-    $results = mysqli_query($link, $sql);
-  }else{
-    ?>
-  <script type="text/javascript">
-    alert("Invalid User");
-    window.location.href = "Chef'sExhibition.php"
-  </script>
-<?php
+    $resultset = mysqli_query($link, $sql);
+  } else {
+?>
+    <script type="text/javascript">
+      alert("Invalid User");
+      window.location.href = "Chef'sExhibition.php"
+    </script>
+  <?php
   }
 } else {
-?>
+  ?>
   <script type="text/javascript">
     alert("User needs to be logged In");
     window.location.href = "Login.php"
   </script>
 <?php
 }
+if (!isset($_GET['page'])) {
+  $page = 1;
+  $_GET['page'] = 1;
+  $predis = "true";
+} else {
+  $page = $_GET['page'];
+  $predis = "false";
+}
+$results_per_page = 8;
+$page_first_result = ($page - 1) * $results_per_page;
+$number_of_result = mysqli_num_rows($resultset);
+$number_of_page = ceil($number_of_result / $results_per_page);
+$query = $sql . " LIMIT " . $page_first_result . ',' . $results_per_page;
+$results = mysqli_query($link, $query);
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,7 +70,7 @@ if (isset($_SESSION["ID"])) {
           <div class="col-12 cheffownprof2">
             <div class="cheffdeatails ml-31">
               <p class="cheffproname">Menu
-              <p>
+              </p>
             </div>
           </div>
         </div>
@@ -67,36 +81,36 @@ if (isset($_SESSION["ID"])) {
 
           <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall">
             <div class="Items">
-            <a href="ProductPage.php?ProductID=<?php echo $row["ItemID"]?>" style="text-decoration: none;">
-              <img src="<?php echo $row["ItemImage"] ?>">
-              <div class="allthings">
-                <p class="itemheading"><?php echo $row["ItemName"] ?></p>
-                <p class="itemdes"><?php echo $row["ShortDescription"] ?></p>
-                </a>
-                <div class="add">
-                  <p class="addalliconsp"><?php echo $row["Price"] ?>/=</p>
-                  <div class="addall">
-                    <button class="minusplus">
-                      <i class="addallicons fas fa-minus quantity"></i>
-                    </button>
-                    <p class="addalliconsp">1</p>
-                    <button class="minusplus">
-                      <i class="addallicons fas fa-plus"></i>
-                    </button>
-                  </div>
+              <a href="ProductPage.php?ProductID=<?php echo $row["ItemID"] ?>" style="text-decoration: none;">
+                <img src="<?php echo $row["ItemImage"] ?>">
+                <div class="allthings">
+                  <p class="itemheading"><?php echo $row["ItemName"] ?></p>
+                  <p class="itemdes"><?php echo $row["ShortDescription"] ?></p>
+              </a>
+              <!-- <div class="add">
+                <p class="addalliconsp"><?php echo $row["Price"] ?>/=</p>
+                <div class="addall">
+                  <button class="minusplus">
+                    <i class="addallicons fas fa-minus quantity"></i>
+                  </button>
+                  <p class="addalliconsp">1</p>
+                  <button class="minusplus">
+                    <i class="addallicons fas fa-plus"></i>
+                  </button>
                 </div>
-                <button class="addtocart">
-                  <p class="">ADD TO CART</p>
-                  <i class="fas fa-shopping-cart"></i>
-                </button>
-              </div>
+              </div> -->
+              <button class="addtocart">
+                <p class="">ADD TO CART</p>
+                <i class="fas fa-shopping-cart"></i>
+              </button>
             </div>
           </div>
+      </div>
 
-        <?php
+    <?php
         }
-        ?>
-        <!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall">
+    ?>
+    <!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 menuall">
           <div class="Items">
             <img src="images/Menu/Food10.jpg">
             <div class="allthings">
@@ -176,11 +190,51 @@ if (isset($_SESSION["ID"])) {
           </div>
         </div> -->
 
-      </div>
-
     </div>
-  </div>
 
+  </div>
+  <!--pagination-->
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center m-5" >
+    <!-- style="background-color: #212529;" -->
+      <?php
+      // if (isset($_GET['search'])) {
+      //   $purl = $url . "&page=";
+      // } else {
+      //   $purl = "products.php?page=";
+      // }
+      $purl="Menu.php?page=";
+      $prepage = $page - 1;
+      $postpage = $page + 1;
+      if ($page >= 2) {
+        echo '
+        <li class="page-item">
+        <a class="page-link" href="' . $purl . $prepage . '" tabindex="-1" disabled="' . $predis . '">&laquo</a>
+        </li>';
+      }
+      ?>
+      <?php
+      for ($page = 1; $page <= $number_of_page; $page++) {
+        if ($page == $_GET['page']) {
+          $active = "active";
+        } else {
+          $active = "";
+        }
+        echo '<li class="page-item ' . $active . ' "><a class="page-link" href="' . $purl . $page . '">' . $page . '</a></li>';
+      }
+      if ($postpage <= $number_of_page) {
+        echo '<li class="page-item">
+  <a class="page-link" href="' . $purl . $postpage . '">&raquo</a>
+</li>';
+      }
+
+      ?>
+
+
+    </ul>
+  </nav>
+  <!--pagination end-->
   <?php
   include "footer.php";
   ?>
