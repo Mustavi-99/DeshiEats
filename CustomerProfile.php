@@ -89,7 +89,7 @@
   <link type="text/css" rel="stylesheet" href="css/DeStylesheet2.css" />
 
 
-  <title>Desh-eats_CustomerProfile_Page</title>
+  <title>Deshieats_CustomerProfile_Page</title>
 
 </head>
 

@@ -18,14 +18,17 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $email=$_POST['useremail'];
         $pass=$_POST['userpassword'];
+        if(isset($_POST['flexRadioDefault']))
         $utype=$_POST['flexRadioDefault'];
+        else
+        $utype="";
 
         if(!empty($email) && !empty($pass) && !empty($utype)){
             
             loginUser($CON,$email,$pass,$utype); //this function is defined in functions.php . check there
 
         }elseif($email=="Admin" && $pass=="admin" && empty($utype)){
-               $_SESSION["ID"]=000;
+               $_SESSION["ID"]="000";
                $_SESSION["type"]="Admin";
                ?><script>window.location.href="AdminPanel.php";</script><?php
 

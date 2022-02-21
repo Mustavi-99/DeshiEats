@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -16,7 +19,7 @@
     <link type="text/css" rel="stylesheet" href="css/DeStylesheet.css" />
     <link type="text/css" rel="stylesheet" href="css/DeStylesheet2.css" />
 
-    <title>Desh-eats_Admin_Panel_Page</title>
+    <title>Deshieats_Admin_Panel_Page</title>
 
 </head>
 
