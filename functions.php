@@ -97,4 +97,93 @@
      
       }
 
+
+      
+      //ei function ta user information update kore
+      function UpdateUserInfo($con,$id,$fullName,$email,$contact,$password,$chefDesc,$chefAddress,$chefImg,$type){
+        
+        if($type=="customer"){
+          
+          $query="UPDATE customer SET CustName='$fullName',CustEmail='$email',CustPassword='$password',CustContactNumber='$contact' WHERE CustID='$id'";
+          
+          if(mysqli_query($con,$query)){
+            $status=true;
+            return $status;
+          }else{
+            $status=false;
+            return $status;
+          }
+
+        }
+        elseif($type=="chef"){
+          $query="UPDATE chef SET ChefName='$fullName',ChefEmail='$email',ChefPassword='$password',ChefContactNumber='$contact',ChefDescription='$chefDesc',ChefAddress='$chefAddress',ChefImage='$chefImg' WHERE ChefID='$id'";
+          
+          if(mysqli_query($con,$query)){
+            $status=true;
+            return $status;
+          }else{
+            $status=false;
+            return $status;
+          }
+          
+        }
+      }
+
+
+      function userInfoGet($con,$id,$type){
+      
+        if($type=="chef"){  
+          $sql="SELECT * FROM chef WHERE ChefID = ?";
+          $stmt=mysqli_stmt_init($con);
+          if(!mysqli_stmt_prepare($stmt,$sql)){
+            header("location:../Login.php?error=stmtfailed");
+            exit();
+          }
+          
+          mysqli_stmt_bind_param($stmt,"i",$id);
+          mysqli_stmt_execute($stmt);
+      
+          $resultData=mysqli_stmt_get_result($stmt);
+      
+          if($row=mysqli_fetch_assoc($resultData)){
+            return $row;
+          }
+          else{
+             $result=false;
+             return $result;
+          }
+      
+          mysqli_stmt_close($stmt);
+        
+        }elseif($type=="customer"){
+          
+           $sql="SELECT * FROM customer WHERE CustID = ?";
+          $stmt=mysqli_stmt_init($con);
+          if(!mysqli_stmt_prepare($stmt,$sql)){
+            header("location:../Login.php?error=stmtfailed");
+            exit();
+          }
+          
+          mysqli_stmt_bind_param($stmt,"i",$id);
+          mysqli_stmt_execute($stmt);
+      
+          $resultData=mysqli_stmt_get_result($stmt);
+      
+          if($row=mysqli_fetch_assoc($resultData)){
+            return $row;
+          }
+          else{
+             $result=false;
+             return $result;
+          }
+      
+          mysqli_stmt_close($stmt);
+        
+        }
+       
+     }
+
+
+
+
 ?>

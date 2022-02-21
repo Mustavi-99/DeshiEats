@@ -1,6 +1,8 @@
 <?php
 session_start();
 include("connect.php");
+include("functions.php");
+
 if(isset($_SESSION["ID"])){
   if($_SESSION["type"]=="customer"){
     ?>
@@ -21,6 +23,71 @@ if(isset($_SESSION["ID"])){
 $sql = "SELECT * FROM chef where ChefID=".$_SESSION["ID"];
 $result = mysqli_query($link,$sql);
 $row = mysqli_fetch_assoc($result);
+
+
+//Update chef code starts here
+if($_SERVER['REQUEST_METHOD']=='POST' && isset($_SESSION['ID'])){
+    
+  $id=$_SESSION['ID'];
+  $type=$_SESSION['type'];
+  
+  $fullName=$_POST['userprofilename'];
+  $email=$_POST['userprofileemail'];
+  $contact=$_POST['userprofilecontactno'];
+  $password=$_POST['userPassword'];
+  
+  $chefDesc=$_POST['userprofileshortdescription'];
+  $chefAddress=$_POST['userprofileaddress'];
+  
+  
+  $destination="images/Uploaded/$id";
+  $destination_file="";
+  
+
+  $destination_file=$destination.basename($_FILES['userimage']['name']);
+  move_uploaded_file($_FILES['userimage']['tmp_name'],$destination_file);
+  
+  $chefImg=$destination_file;              
+
+
+  if(!empty($fullName)  && !empty($contact) && !empty($email) && !empty($password) && !empty($chefDesc) && !empty($chefAddress) && !empty($chefImg)){
+    if(UpdateUserInfo($CON,$id,$fullName,$email,$contact,$password,$chefDesc,$chefAddress,$chefImg,$type)){
+      
+      ?>
+      <script type="text/javascript">
+        alert("User Updated!");
+        window.location.href = "ChefProfile.php"
+      </script>
+      <?php
+
+    }else{
+      
+      ?>
+      <script type="text/javascript">
+        alert("Error! cant update check chef Update function");
+        window.location.href = "ChefProfile.php"
+      </script>
+      <?php
+
+    }
+  }else{
+    
+    ?>
+      <script type="text/javascript">
+        alert("Some fields are empty.Check again");
+        window.location.href = "Chef.php"
+      </script>
+    <?php
+
+  }
+
+
+}else{
+
+}
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -107,6 +174,11 @@ $row = mysqli_fetch_assoc($result);
           <div class="mb-4 mt-2 userprofilecontents">
             <p class="userprofilelabels">User Name:</p>
             <input type="text" placeholder="<?php echo $row["ChefName"] ?>" name="username" value="<?php echo $row["ChefName"] ?>" class="form-control userformholders" disabled />
+          </div>
+          <div class="round">
+            <input type="file" name="userimage">
+            <p class="userprofilelabels">Profile Pic Upload:</p>
+            <i class="fa fa-camera" style="color:aliceblue"></i>
           </div>
           <div class="userprofileallbuttons">
             <button type="submit" name="UserProfileconfirm" value="Save changes" class="btn-submit" onclick=" "> Submit</button>

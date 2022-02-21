@@ -1,3 +1,76 @@
+<?php 
+  session_start();
+  include("connect.php");
+  include("functions.php");
+  
+  if(isset($_SESSION['ID'])){
+    $id=$_SESSION['ID'];
+    $type=$_SESSION['type'];
+    
+    $displayinfo=userInfoGet($CON,$id,$type);
+
+    $showName=$displayinfo['CustName'];
+    $showEmail=$displayinfo['CustEmail'];
+    $showContact=$displayinfo['CustContactNumber'];
+    
+  }else{
+
+  }
+
+
+  if($_SERVER['REQUEST_METHOD']=='POST' && isset($_SESSION['ID'])){
+    
+    $id=$_SESSION['ID'];
+    $type=$_SESSION['type'];
+    
+    $fullName=$_POST['userprofilename'];
+    $email=$_POST['userprofileemail'];
+    $contact=$_POST['userprofilecontactno'];
+    $password=$_POST['userPassword'];
+    
+    $chefDesc="";
+    $chefAddress="";
+    $chefImg="";
+    
+    
+
+    if(!empty($fullName)  && !empty($contact) && !empty($email) && !empty($password)){
+      if(UpdateUserInfo($CON,$id,$fullName,$email,$contact,$password,$chefDesc,$chefAddress,$chefImg,$type)){
+        
+        ?>
+        <script type="text/javascript">
+          alert("User Updated!");
+          window.location.href = "CustomerProfile.php"
+        </script>
+        <?php
+
+      }else{
+        
+        ?>
+        <script type="text/javascript">
+          alert("Error! cant update check customer Update function");
+          window.location.href = "CustomerProfile.php"
+        </script>
+        <?php
+
+      }
+    }else{
+      
+      ?>
+        <script type="text/javascript">
+          alert("Some fields are empty.Check again");
+          window.location.href = "CustomerProfile.php"
+        </script>
+      <?php
+
+    }
+
+
+  }else{
+
+  }
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -36,7 +109,7 @@
         <form action="" method="POST" enctype="multipart/form-data">
           <div class="mb-4 mt-2 userprofilecontents">
             <p class="userprofilelabels">Full Name:</p>
-            <input type="text" placeholder="#Backend <?php //echo $fullName 
+            <input type="text" placeholder=" <?php echo $showName; 
                                                       ?>" name="userprofilename" value="" class="form-control userformholders" />
           </div>
 
@@ -44,22 +117,22 @@
 
           <div class="mb-4 mt-2 userprofilecontents">
             <p class="userprofilelabels">Email:</p>
-            <input type="email" placeholder="#Backend<?php //echo $email 
+            <input type="email" placeholder="<?php echo $showEmail; 
                                                       ?>" name="userprofileemail" value="" class="form-control userformholders" />
           </div>
           <div class="mb-4 mt-2 userprofilecontents">
             <p class="userprofilelabels">Contact No:</p>
-            <input type="text" placeholder="#Backend<?php //echo $contact 
+            <input type="text" placeholder="<?php echo $showContact ;
                                                     ?>" name="userprofilecontactno" value="" class="form-control userformholders" />
           </div>
           <div class="mb-4 mt-2 userprofilecontents">
             <p class="userprofilelabels">Password:</p>
-            <input type="password" placeholder="#Backende<?php //echo $password 
+            <input type="password" placeholder="Password is hidden<?php //echo $password 
                                                           ?>" name="userPassword" value="" class="form-control userformholders" />
           </div>
           <div class="mb-4 mt-2 userprofilecontents">
             <p class="userprofilelabels">User Name:</p>
-            <input type="text" placeholder="#Backend<?php //echo $userName 
+            <input type="text" placeholder="<?php echo $showName; 
                                                     ?>" name="username" value="" class="form-control userformholders" disabled />
           </div>
           <div class="userprofileallbuttons">
