@@ -104,7 +104,7 @@
         
         if($type=="customer"){
           
-          $query="UPDATE customer SET CustName='$fullName',CustEmail='$email',CustPassword='$password',CustContactNumber='$contact' WHERE CustID='$id'";
+          $query="UPDATE customer SET CustName='$fullName',CustEmail='$email',CustPassword='$password',CustContactNumber='$contact' ,CustAddress='$chefAddress' ,CustArea='$chefDesc' WHERE CustID='$id'";
           
           if(mysqli_query($con,$query)){
             $status=true;
@@ -182,6 +182,7 @@
         }
        
      }
+     
      function inputMessage($link,$name,$email,$phone,$message){
        $contactsql = "INSERT INTO `contactus`( `ContactName`, `ContactEmail`, `ContactPhone`, `ContactMessage`) VALUES ('".$name."','".$email."','".$phone."','".$message."')";
        if(!mysqli_query($link,$contactsql)){
@@ -191,7 +192,31 @@
        }
      }
 
+     
+     function getMessages($link){
+        $query="SELECT * FROM contactus";
+        $result = mysqli_query($link, $query);
+        return $result;
 
+     }
+
+     function removeMessages($link,$id){
+      $query="DELETE FROM contactus WHERE ContactID =".$id;
+      //echo $query;
+      if(mysqli_query($link,$query)){
+        
+        $status=true;
+        return $status;
+        
+      }else{
+          
+        $status=false;
+        return $status;
+      
+      }
+      
+
+     }
 
 
 ?>

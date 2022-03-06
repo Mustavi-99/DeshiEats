@@ -1,5 +1,34 @@
 <?php
 session_start();
+
+include("connect.php");
+include("functions.php");
+
+$result=getMessages($link);
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    
+    $msgID=$_POST['Item_name'];
+    
+    if(removeMessages($link,$msgID)){
+        
+        ?>
+        <script type="text/javascript">
+          alert("Message Removed.");
+          window.location.href='AdminPanel.php'
+        </script>
+        <?php
+    
+    }else{
+        ?>
+        <script type="text/javascript">
+          alert("Error!Message not removed check the remove function");
+          window.location.href='AdminPanel.php'
+        </script>
+        <?php
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -204,25 +233,31 @@ session_start();
                     <table class="table table-bordered ordertable">
                         <thead>
                             <tr class="text-align-center">
-                                <th scope="col" class="orderhead">Customer ID</th>
+                                <th scope="col" class="orderhead">Message ID</th>
                                 <th scope="col" class="orderhead">Customer Name</th>
                                 <th scope="col" class="orderhead">Message</th>
                                 <th scope="col" class="orderhead">Remove</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
+                            <?php 
+                            while($rowItem = mysqli_fetch_assoc($result)){
+                            ?>
                             <tr>
-                                <td class='orderdatas'>1</td>
-                                <td class='orderdatas'>Rahim</td>
-                                <td class='orderdatas'>Pocha khabar</td>
+                                <td class='orderdatas' ><?php echo $rowItem['ContactID']; ?></td>
+                                <td class='orderdatas' ><?php echo $rowItem['ContactName']; ?></td>
+                                <td class='orderdatas' ><?php echo $rowItem['ContactMessage']; ?></td>
                                 <td>
-                                    <form action='ManageCart.php' method='POST'>
-                                        <button name='Remove_Item' class='plusMinusButton'> REMOVE </button>
-                                        <input type='hidden' name='Item_name' value='$value[Item_name]'>
+                                    <form action='' method='POST'>
+                                        <button name='Remove_Item' class='plusMinusButton' type='submit' > REMOVE </button>
+                                        <input type='hidden' name='Item_name' value="<?php echo $rowItem['ContactID'] ?>" >
                                     </form>
                                 </td>
                             </tr>
-                            <tr>
+                            <?php 
+                            } 
+                            ?>
+                            <!--<tr>
                                 <td class='orderdatas'>2</td>
                                 <td class='orderdatas'>Karim</td>
                                 <td class='orderdatas'>backend</td>
@@ -243,7 +278,8 @@ session_start();
                                         <input type='hidden' name='Item_name' value='$value[Item_name]'>
                                     </form>
                                 </td>
-                            </tr>
+                            </tr>-->
+
                         </tbody>
                     </table>
                 </div>

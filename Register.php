@@ -5,7 +5,7 @@
 
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
-    $fullname=$_POST['fname']."-".$_POST['lname'];
+    $fullname=$_POST['fname']." ".$_POST['lname'];
     $Email=$_POST['email'];
     $contact=(int)$_POST['contactNo'];
     $passwrd=$_POST['pass'];
@@ -16,6 +16,9 @@
     $chefArea="Chef/Company area";
     $chefImage="Chef Image";
     
+    $custOrder=0;
+    $custAddress="N/A";
+    $custArea="N/A";
 
     $userType=$_POST['utype'];
 
@@ -25,18 +28,22 @@
         
         if($userType=="customer"){
           
-          /*
-          CustOrder ta ki hobe? 
-          $query="INSERT INTO customer(CustName, CustEmail, CustPassword, CustContactNumber, CustOrder, CustAddress, CustArea) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7])";
+          
+          
+          $query="INSERT INTO customer(CustName, CustEmail, CustPassword, CustContactNumber, CustOrder, CustAddress, CustArea) VALUES ('$fullname','$Email','$confpasswrd','$contact','$custOrder','$custAddress','$custArea')";
 
             if(mysqli_query($CON,$query)){
-            echo "<script>window.location.href='Login.php';</script>";
+            echo "<script>
+            alert('You are all set.');
+            window.location.href='Login.php';</script>";
           }else{
-            echo "<script>window.location.href='Register.php?error-in-customer-insert';</script>";
+            echo "<script>
+            alert('Cant create user something went wrong');
+            window.location.href='Register.php?error-in-customer-insert';</script>";
           }
 
 
-          */
+          
         
         }elseif($userType=="chef"){
           
@@ -44,9 +51,13 @@
           
           
           if(mysqli_query($CON,$query)){
-            echo "<script>window.location.href='Login.php';</script>";
+            echo "<script>
+            alert('Go back to kitchen.');
+            window.location.href='Login.php';</script>";
           }else{
-            echo "<script>window.location.href='Register.php?error-in-chef-insert';</script>";
+            echo "<script>
+            alert('Cant create user something went wrong');
+            window.location.href='Register.php?error-in-chef-insert';</script>";
           }
 
 

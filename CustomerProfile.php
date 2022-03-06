@@ -12,6 +12,9 @@
     $showName=$displayinfo['CustName'];
     $showEmail=$displayinfo['CustEmail'];
     $showContact=$displayinfo['CustContactNumber'];
+    $showAddress=$displayinfo['CustAddress'];
+    $showArea=$displayinfo['CustArea'];
+    
     
   }else{
 
@@ -28,14 +31,14 @@
     $contact=$_POST['userprofilecontactno'];
     $password=$_POST['userPassword'];
     
-    $chefDesc="";
-    $chefAddress="";
+    $area=$_POST['userarea'];
+    $Address=$_POST['useraddress'];
     $chefImg="";
     
     
 
     if(!empty($fullName)  && !empty($contact) && !empty($email) && !empty($password)){
-      if(UpdateUserInfo($CON,$id,$fullName,$email,$contact,$password,$chefDesc,$chefAddress,$chefImg,$type)){
+      if(UpdateUserInfo($CON,$id,$fullName,$email,$contact,$password,$area,$Address,$chefImg,$type)){
         
         ?>
         <script type="text/javascript">
@@ -117,7 +120,7 @@
 
           <div class="mb-4 mt-2 userprofilecontents">
             <p class="userprofilelabels">Email:</p>
-            <input type="email" placeholder="<?php echo $showEmail;?>" name="userprofileemail" value="" class="form-control userformholders" />
+            <input type="email" placeholder="<?php echo $showEmail;?>" name="userprofileemail" value="<?php echo $showEmail;?>" class="form-control userformholders" />
           </div>
           <div class="mb-4 mt-2 userprofilecontents">
             <p class="userprofilelabels">Contact No:</p>
@@ -127,10 +130,19 @@
             <p class="userprofilelabels">Password:</p>
             <input type="password" placeholder="Password is hidden<?php //echo $password ?>" name="userPassword" value="" class="form-control userformholders" />
           </div>
+          
           <div class="mb-4 mt-2 userprofilecontents">
-            <p class="userprofilelabels">User Name:</p>
-            <input type="text" placeholder="<?php echo $showName; ?>" name="username" value="" class="form-control userformholders" disabled />
+            <p class="userprofilelabels">User Address:</p>
+            <input type="text" placeholder="<?php echo $showAddress; ?>" name="useraddress" value="" class="form-control userformholders" />
           </div>
+          
+          <div class="mb-4 mt-2 userprofilecontents">
+            <p class="userprofilelabels">User Area:</p>
+            <input type="text" placeholder="<?php echo $showArea; ?>" name="userarea" value="" class="form-control userformholders" />
+          </div>
+          
+
+
           <div class="userprofileallbuttons">
             <button type="submit" name="UserProfileconfirm" value="Save changes" class="btn-submit" onclick=" "> Submit</button>
             <!--<input type="submit" name="UserProfilePasswordChange" value="Change Password" class="passwordchangebutton" onclick=" "/>-->
