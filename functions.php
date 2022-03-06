@@ -182,6 +182,14 @@
         }
        
      }
+     function inputMessage($link,$name,$email,$phone,$message){
+       $contactsql = "INSERT INTO `contactus`( `ContactName`, `ContactEmail`, `ContactPhone`, `ContactMessage`) VALUES ('".$name."','".$email."','".$phone."','".$message."')";
+       if(!mysqli_query($link,$contactsql)){
+          echo '<script type="text/javascript">
+          alert("Something went wrong! Try Again");
+        </script>';
+       }
+     }
 
 
 

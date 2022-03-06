@@ -117,23 +117,19 @@
 
           <div class="mb-4 mt-2 userprofilecontents">
             <p class="userprofilelabels">Email:</p>
-            <input type="email" placeholder="<?php echo $showEmail; 
-                                                      ?>" name="userprofileemail" value="" class="form-control userformholders" />
+            <input type="email" placeholder="<?php echo $showEmail;?>" name="userprofileemail" value="" class="form-control userformholders" />
           </div>
           <div class="mb-4 mt-2 userprofilecontents">
             <p class="userprofilelabels">Contact No:</p>
-            <input type="text" placeholder="<?php echo $showContact ;
-                                                    ?>" name="userprofilecontactno" value="" class="form-control userformholders" />
+            <input type="text" placeholder="<?php echo $showContact ;?>" name="userprofilecontactno" value="" class="form-control userformholders" />
           </div>
           <div class="mb-4 mt-2 userprofilecontents">
             <p class="userprofilelabels">Password:</p>
-            <input type="password" placeholder="Password is hidden<?php //echo $password 
-                                                          ?>" name="userPassword" value="" class="form-control userformholders" />
+            <input type="password" placeholder="Password is hidden<?php //echo $password ?>" name="userPassword" value="" class="form-control userformholders" />
           </div>
           <div class="mb-4 mt-2 userprofilecontents">
             <p class="userprofilelabels">User Name:</p>
-            <input type="text" placeholder="<?php echo $showName; 
-                                                    ?>" name="username" value="" class="form-control userformholders" disabled />
+            <input type="text" placeholder="<?php echo $showName; ?>" name="username" value="" class="form-control userformholders" disabled />
           </div>
           <div class="userprofileallbuttons">
             <button type="submit" name="UserProfileconfirm" value="Save changes" class="btn-submit" onclick=" "> Submit</button>
