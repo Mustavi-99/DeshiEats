@@ -80,7 +80,7 @@ include("functions.php");
 	  </section>
 
           <?php
-            // include "footer.php";
+            include "footer.php";
           ?>
 
 	</body>
