@@ -92,7 +92,7 @@
 
         }
         else{
-           echo "<script>window.location.href='Login.php?Pass-word-mismatch';</script>";
+           echo "<script>alert('User name or password empty or the type not chosen. Check please.')window.location.href='Login.php?Pass-word-mismatch';</script>";
         }
      
       }

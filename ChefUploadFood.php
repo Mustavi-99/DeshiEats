@@ -39,7 +39,7 @@
                             </div>
                           </div>
                         <div class="col-12 .col-sm-12 col-lg-6 .col-md-6 col-xl-6 formbox">
-                            <form action=" "method="POST">
+                            <form action="" method="POST">
                                 <div class="formbox">
                                     <p class="dont">Upload some delicious food</p>
                                 </div>
@@ -48,8 +48,16 @@
                                     <input type="text" placeholder="" name="itemname" value="" class="form-control" />
                                 </div>
                                 <div class="form-group formbox mb-3"> 
+                                    <label class="mb-3 formlabel">Short Description</label>
+                                    <input type="text" placeholder="" name="itemshortdes" value="" class="form-control" />
+                                </div>
+                                <div class="form-group formbox mb-3"> 
                                     <label class="mb-3 formlabel">Description</label>
                                     <input type="text" placeholder="" name="itemdes" value="" class="form-control" />
+                                </div>
+                                <div class="form-group formbox mb-3"> 
+                                    <label class="mb-3 formlabel">Quantity</label>
+                                    <input type="number" placeholder="" name="itemquan" value="" class="form-control" />
                                 </div>
                                 <div class="form-group formbox mb-3"> 
                                     <label class="mb-3 formlabel">Prize</label>

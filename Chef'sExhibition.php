@@ -68,7 +68,7 @@ $resultItem = mysqli_query($link, $sqlItem);
           <div class="cheffdeatails ml-31">
             <p class="cheffproname"><?php echo $row["ChefName"] ?></p>
             <p class="cheffdes"><?php echo $row["ChefDescription"] ?></p>
-            <button class="addmore">
+            <button class="addmore" onclick="location.href='ChefUploadFood.php?id=<?php echo $row['ChefID']?>'">
               <p class="pt-3 afi">+ Add more food items</p>
             </button>
           </div>
@@ -188,7 +188,7 @@ $resultItem = mysqli_query($link, $sqlItem);
                   </div>
               </div> -->
 
-        <button class="delitem mb-4">
+        <button class="delitem mb-4" onclick="location.href='DeleteItems.php'">
           <p class="pt-3 afi"> - Delete Item</p>
         </button>
 

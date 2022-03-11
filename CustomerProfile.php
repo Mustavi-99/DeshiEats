@@ -38,27 +38,22 @@
     
 
     if(!empty($fullName)  && !empty($contact) && !empty($email) && !empty($password)){
-      if(UpdateUserInfo($CON,$id,$fullName,$email,$contact,$password,$area,$Address,$chefImg,$type)){
-        
+      if(UpdateUserInfo($CON,$id,$fullName,$email,$contact,$password,$area,$Address,$chefImg,$type)){      
         ?>
         <script type="text/javascript">
           alert("User Updated!");
           window.location.href = "CustomerProfile.php"
         </script>
         <?php
-
-      }else{
-        
+      }else{    
         ?>
         <script type="text/javascript">
           alert("Error! cant update check customer Update function");
           window.location.href = "CustomerProfile.php"
         </script>
         <?php
-
       }
     }else{
-      
       ?>
         <script type="text/javascript">
           alert("Some fields are empty.Check again");
