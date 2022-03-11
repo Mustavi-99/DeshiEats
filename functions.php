@@ -63,6 +63,13 @@
            echo "<script>window.location.href='Login.php?user-dont-exists';</script>";
            exit();
         }
+        if($userExists["Status"]!="Active"){
+          echo "<script>
+                alert('User has been banned!');
+                window.location.href='Login.php';
+                </script>";
+          exit();
+       }
 
         if($type=="chef"){
          $pwd=$userExists["ChefPassword"];       
@@ -253,7 +260,7 @@
     }
 
     function getTopCustomers($con){
-      $query="SELECT * FROM customer ORDER BY 'CustOrder' DESC LIMIT 3";
+      $query="SELECT * FROM customer WHERE Status='Active' ORDER BY 'CustOrder' DESC LIMIT 3";
       $result = mysqli_query($con, $query);
       return $result;
 
@@ -266,11 +273,40 @@
     }
 
     function getTopChef($con){
-      $query="SELECT * FROM chef ORDER BY 'ChefID' DESC LIMIT 3";
+      $query="SELECT * FROM chef WHERE Status='Active' ORDER BY 'ChefID' DESC LIMIT 3";
       $result = mysqli_query($con, $query);
       return $result;
 
     }
 
+    function deactivateCust($con,$id){
+        $query="UPDATE customer SET `Status`='Banned' WHERE CustID=".$id;
+        if(mysqli_query($con,$query)){
+        
+          $status=true;
+          return $status;
+          
+        }else{
+            
+          $status=false;
+          return $status;
+        
+        }
+    }
+
+    function deactivateChef($con,$id){
+      $query="UPDATE chef SET `Status`='Banned' WHERE ChefID=".$id;
+      if(mysqli_query($con,$query)){
+      
+        $status=true;
+        return $status;
+        
+      }else{
+          
+        $status=false;
+        return $status;
+      
+      }
+    }
 
 ?>

@@ -8,7 +8,7 @@ $result=getMessages($link);
 $topCustResult=getTopCustomers($link);
 $topChefResult=getTopChef($link);
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['Item_name'])){
     
     $msgID=$_POST['Item_name'];
     
@@ -25,6 +25,45 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         ?>
         <script type="text/javascript">
           alert("Error!Message not removed check the remove function");
+          window.location.href='AdminPanel.php'
+        </script>
+        <?php
+    }
+
+}elseif($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['cust_ID'])){
+    $ID=$_POST['cust_ID'];
+    if(deactivateCust($link,$ID)){
+        
+        ?>
+        <script type="text/javascript">
+          alert("Customer has been banned");
+          window.location.href='AdminPanel.php'
+        </script>
+        <?php
+    
+    }else{
+        ?>
+        <script type="text/javascript">
+          alert("Error!Cannot ban");
+          window.location.href='AdminPanel.php'
+        </script>
+        <?php
+    }
+}elseif($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['chef_ID'])){
+    $ID=$_POST['chef_ID'];
+    if(deactivateChef($link,$ID)){
+        
+        ?>
+        <script type="text/javascript">
+          alert("Chef has been banned");
+          window.location.href='AdminPanel.php'
+        </script>
+        <?php
+    
+    }else{
+        ?>
+        <script type="text/javascript">
+          alert("Error!Cannot ban");
           window.location.href='AdminPanel.php'
         </script>
         <?php
@@ -111,15 +150,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                                 while($rowItem = mysqli_fetch_assoc($topChefResult)){ 
                             ?>
                             <tr>
-                                <td class='orderdatas'>1</td>
-                                <td class='orderdatas'>Rahim</td>
-                                <td class='orderdatas'>Dhanmondi</td>
-                                <td class='orderdatas'>rahim@email.com</td>
-                                <td class='orderdatas'>01694206920</td>
+                                <td class='orderdatas'><?php  echo $rowItem['ChefID'] ?></td>
+                                <td class='orderdatas'><?php  echo $rowItem['ChefName'] ?></td>
+                                <td class='orderdatas'><?php  echo $rowItem['ChefAddress'] ?></td>
+                                <td class='orderdatas'><?php  echo $rowItem['ChefEmail'] ?></td>
+                                <td class='orderdatas'><?php  echo $rowItem['ChefContactNumber']; ?></td>
                                 <td>
-                                    <form action='ManageCart.php' method='POST'>
+                                    <form action='' method='POST'>
                                         <button name='Remove_Item' class='plusMinusButton'> Deactivate </button>
-                                        <input type='hidden' name='Item_name' value='$value[Item_name]'>
+                                        <input type='hidden' name='chef_ID' value='<?php echo $rowItem['ChefID'] ?>'>
                                     </form>
                                 </td>
                             </tr>
@@ -193,9 +232,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                                 <td class='orderdatas'><?php echo $rowItem['CustEmail']; ?></td>
                                 <td class='orderdatas'><?php echo $rowItem['CustContactNumber']; ?></td>
                                 <td>
-                                    <form action='ManageCart.php' method='POST'>
+                                    <form action='' method='POST'>
                                         <button name='Remove_Item' class='plusMinusButton'> Deactivate </button>
-                                        <input type='hidden' name='Item_name' value='$value[Item_name]'>
+                                        <input type='hidden' name='cust_ID' value='<?php echo $rowItem['CustID'] ?>'>
                                     </form>
                                 </td>
                             </tr>
