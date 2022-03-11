@@ -5,6 +5,8 @@ include("connect.php");
 include("functions.php");
 
 $result=getMessages($link);
+$topCustResult=getTopCustomers($link);
+$topChefResult=getTopChef($link);
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
@@ -96,15 +98,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     <table class="table table-bordered ordertable">
                         <thead>
                             <tr class="text-align-center">
-                                <th scope="col" class="orderhead">chef ID</th>
-                                <th scope="col" class="orderhead">chef Name</th>
-                                <th scope="col" class="orderhead">chef Address</th>
+                                <th scope="col" class="orderhead">Chef ID</th>
+                                <th scope="col" class="orderhead">Chef Name</th>
+                                <th scope="col" class="orderhead">Chef Address</th>
                                 <th scope="col" class="orderhead">Email</th>
                                 <th scope="col" class="orderhead">Contact</th>
                                 <th scope="col" class="orderhead">Remove</th>
                             </tr>
                         </thead>
                         <tbody class="text-center">
+                            <?php 
+                                while($rowItem = mysqli_fetch_assoc($topChefResult)){ 
+                            ?>
                             <tr>
                                 <td class='orderdatas'>1</td>
                                 <td class='orderdatas'>Rahim</td>
@@ -113,12 +118,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                                 <td class='orderdatas'>01694206920</td>
                                 <td>
                                     <form action='ManageCart.php' method='POST'>
-                                        <button name='Remove_Item' class='plusMinusButton'> REMOVE </button>
+                                        <button name='Remove_Item' class='plusMinusButton'> Deactivate </button>
                                         <input type='hidden' name='Item_name' value='$value[Item_name]'>
                                     </form>
                                 </td>
                             </tr>
-                            <tr>
+                            <?php 
+                            }
+                            ?>
+                            <!--<tr>
                                 <td class='orderdatas'>2</td>
                                 <td class='orderdatas'>Karim</td>
                                 <td class='orderdatas'>backend</td>
@@ -143,11 +151,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                                         <input type='hidden' name='Item_name' value='$value[Item_name]'>
                                     </form>
                                 </td>
-                            </tr>
+                            </tr>-->
                         </tbody>
                     </table>
                     <div class="col-xl-3">
-                        <a style="text-decoration:none" href="ShowAll.php">
+                        <a style="text-decoration:none" href="ShowAll.php?category=Chef">
                             <p id="t2">See more>></p>
                         </a>
                     </div>
@@ -175,49 +183,30 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                             </tr>
                         </thead>
                         <tbody class="text-center">
+                            <?php 
+                                while($rowItem = mysqli_fetch_assoc($topCustResult)){ 
+                            ?>
                             <tr>
-                                <td class='orderdatas'>1</td>
-                                <td class='orderdatas'>Rahim</td>
-                                <td class='orderdatas'>Dhanmondi</td>
-                                <td class='orderdatas'>rahim@email.com</td>
-                                <td class='orderdatas'>01694206920</td>
+                                <td class='orderdatas'><?php echo $rowItem['CustID']; ?></td>
+                                <td class='orderdatas'><?php echo $rowItem['CustName']; ?></td>
+                                <td class='orderdatas'><?php echo $rowItem['CustAddress']; ?></td>
+                                <td class='orderdatas'><?php echo $rowItem['CustEmail']; ?></td>
+                                <td class='orderdatas'><?php echo $rowItem['CustContactNumber']; ?></td>
                                 <td>
                                     <form action='ManageCart.php' method='POST'>
-                                        <button name='Remove_Item' class='plusMinusButton'> REMOVE </button>
+                                        <button name='Remove_Item' class='plusMinusButton'> Deactivate </button>
                                         <input type='hidden' name='Item_name' value='$value[Item_name]'>
                                     </form>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class='orderdatas'>2</td>
-                                <td class='orderdatas'>Karim</td>
-                                <td class='orderdatas'>backend</td>
-                                <td class='orderdatas'>backend</td>
-                                <td class='orderdatas'>backend</td>
-                                <td>
-                                    <form action='ManageCart.php' method='POST'>
-                                        <button name='Remove_Item' class='plusMinusButton'> REMOVE </button>
-                                        <input type='hidden' name='Item_name' value='$value[Item_name]'>
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class='orderdatas'>3</td>
-                                <td class='orderdatas'>backend</td>
-                                <td class='orderdatas'>backend</td>
-                                <td class='orderdatas'>backend</td>
-                                <td class='orderdatas'>backend</td>
-                                <td>
-                                    <form action='ManageCart.php' method='POST'>
-                                        <button name='Remove_Item' class='plusMinusButton'> REMOVE </button>
-                                        <input type='hidden' name='Item_name' value='$value[Item_name]'>
-                                    </form>
-                                </td>
-                            </tr>
+                            <?php 
+                            }
+                            ?>
+                            
                         </tbody>
                     </table>
                     <div class="col-xl-3">
-                        <a style="text-decoration:none" href="ShowAll.php">
+                        <a style="text-decoration:none" href="ShowAll.php?category=Customer">
                             <p id="t2">See more>></p>
                         </a>
                     </div>

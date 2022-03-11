@@ -1,3 +1,56 @@
+<?php 
+    
+    session_start();
+    include("connect.php");
+    include("functions.php");
+
+    if($_SERVER['REQUEST_METHOD']=='POST' && isset($_SESSION['ID'])){
+        if(isset($_FILES['Img'])){
+            $itemName=$_POST['itemname'];
+            $itemShortDesc=$_POST['itemshortdes'];
+            $itemDesc=$_POST['itemdes'];
+            $itemQuantity=$_POST['itemquan'];
+            $itemPrize=$_POST['itemprize'];
+            //$itemImg=$_POST['itemImg'];
+            $itemOwner=$_SESSION['ID'];
+            
+            $destination="images/FoodImg/$itemOwner";
+            $destination_file="";
+    
+
+            $destination_file=$destination.basename($_FILES['Img']['name']);
+            move_uploaded_file($_FILES['Img']['tmp_name'],$destination_file);
+    
+            $itemImg=$destination_file;              
+            
+            if(chefAddItem($link,$itemOwner,$itemName,$itemShortDesc,$itemDesc,$itemQuantity,$itemPrize,$itemImg)){
+                ?>
+                <script type="text/javascript">
+                alert("Food Added!");
+                window.location.href = "ChefUploadFood.php"
+                </script>
+                <?php
+            
+            }else{
+                ?>
+                <script type="text/javascript">
+                alert("Error! Not added");
+                window.location.href = "ChefUploadFood.php"
+                </script>
+                <?php
+            }
+        }else{
+            ?>
+                <script type="text/javascript">
+                alert("Image not found");
+                window.location.href = "ChefUploadFood.php"
+                </script>
+                <?php
+        }
+        
+    }
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,13 +86,13 @@
                             <div class="upload">
                                     <img src ="images/Menu/food4.jpg" height = 150 width = 150 alt="">
                                     <div class="round">
-                                      <input type="file">
+                                      <input type="file" name="Img" >
                                       <i class="fas fa-camera" style="color:aliceblue"></i>
                                     </div> 
                             </div>
                           </div>
                         <div class="col-12 .col-sm-12 col-lg-6 .col-md-6 col-xl-6 formbox">
-                            <form action="" method="POST">
+                            <form action="" method="POST" enctype="multipart/form-data">
                                 <div class="formbox">
                                     <p class="dont">Upload some delicious food</p>
                                 </div>
@@ -61,7 +114,11 @@
                                 </div>
                                 <div class="form-group formbox mb-3"> 
                                     <label class="mb-3 formlabel">Prize</label>
-                                    <input type="text" placeholder="Set prize" name="itemdes" value="" class="form-control mb-2" />
+                                    <input type="text" placeholder="Set prize" name="itemprize" value="" class="form-control mb-2" />
+                                </div>
+                                <div class="round">
+                                      <input type="file" name="Img" >
+                                      <i class="fas fa-camera" style="color:aliceblue"></i>
                                 </div>
                                 <div class="formbox formbuto mb-3"> 
                                     <input type="submit" name="Signin" value="+ ADD ITEM" class="btn" />

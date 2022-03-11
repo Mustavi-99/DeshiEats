@@ -218,5 +218,49 @@
 
      }
 
+    function chefAddItem($con,$ownerId,$name,$shortDesc,$Desc,$quantity,$prize,$Img){
+      $orderCount=0;
+      $query="INSERT INTO item(ItemName, ShortDescription, Description, Price, Quantity, OwnerID, ItemImage, OrderCount) VALUES ('$name','$shortDesc','$Desc','$prize','$quantity','$ownerId','$Img','$orderCount')";
+      
+      if(mysqli_query($con,$query)){
+        
+        $status=true;
+        return $status;
+        
+      }else{
+          
+        $status=false;
+        return $status;
+      
+      }
+
+    }
+
+    function getAllCustomers($con){
+      $query="SELECT * FROM customer";
+      $result = mysqli_query($con, $query);
+      return $result;
+    }
+
+    function getTopCustomers($con){
+      $query="SELECT * FROM customer ORDER BY 'CustOrder' DESC LIMIT 3";
+      $result = mysqli_query($con, $query);
+      return $result;
+
+    }
+
+    function getAllChef($con){
+      $query="SELECT * FROM chef";
+      $result = mysqli_query($con, $query);
+      return $result;
+    }
+
+    function getTopChef($con){
+      $query="SELECT * FROM chef ORDER BY 'ChefID' DESC LIMIT 3";
+      $result = mysqli_query($con, $query);
+      return $result;
+
+    }
+
 
 ?>

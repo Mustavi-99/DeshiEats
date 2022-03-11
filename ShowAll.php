@@ -1,3 +1,21 @@
+<?php 
+
+session_start();
+
+include("connect.php");
+include("functions.php");
+
+if(isset($_GET['category'])){
+    if($_GET['category']=='Customer'){
+       $CustResult=getAllCustomers($link);
+    }elseif($_GET['category']=='Chef'){
+        $ChefResult=getAllChef($link);
+    }
+    
+}
+
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -40,18 +58,24 @@
                             </tr>
                         </thead>
                         <tbody class="text-center">
+                            <?php 
+                                while($rowItem = mysqli_fetch_assoc($CustResult)){ 
+                            ?>
                             <tr>
-                                <td class='orderdatas'>Rahim</td>
-                                <td class='orderdatas'>Dhanmondi</td>
-                                <td class='orderdatas'>rahim@email.com</td>
-                                <td class='orderdatas'>01694206920</td>
+                                <td class='orderdatas'><?php echo $rowItem['CustName']; ?></td>
+                                <td class='orderdatas'><?php echo $rowItem['CustAddress']; ?></td>
+                                <td class='orderdatas'><?php echo $rowItem['CustEmail']; ?></td>
+                                <td class='orderdatas'><?php echo $rowItem['CustContactNumber']; ?></td>
                                 <td>
                                     <form action='ManageCart.php' method='POST'>
-                                        <button name='Remove_Item' class='plusMinusButton'> REMOVE </button>
+                                        <button name='Remove_Item' class='plusMinusButton'> Deactivate </button>
                                         <input type='hidden' name='Item_name' value='$value[Item_name]'>
                                     </form>
                                 </td>
                             </tr>
+                            <?php 
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
