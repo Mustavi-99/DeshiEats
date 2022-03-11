@@ -147,7 +147,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                         </tbody>
                     </table>
                     <div class="col-xl-3">
-                        <a style="text-decoration:none" href="showAll.php">
+                        <a style="text-decoration:none" href="ShowAll.php">
                             <p id="t2">See more>></p>
                         </a>
                     </div>
@@ -217,7 +217,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                         </tbody>
                     </table>
                     <div class="col-xl-3">
-                        <a style="text-decoration:none" href="showAll.php">
+                        <a style="text-decoration:none" href="ShowAll.php">
                             <p id="t2">See more>></p>
                         </a>
                     </div>
