@@ -214,7 +214,17 @@
         return $status;
       
       }
-      
+    }
+
+    function removeItems($link,$id){
+      $query = "DELETE FROM item WHERE ItemID =".$id;
+      if(mysqli_query($link,$query)){
+       $status=true;
+       return $status;
+     }else{  
+       $status=false;
+       return $status;
+     }
 
      }
 
