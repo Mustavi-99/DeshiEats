@@ -59,6 +59,7 @@ if(isset($_GET['category'])){
                         </thead>
                         <tbody class="text-center">
                             <?php 
+                              if($_GET['category']=='Customer'){
                                 while($rowItem = mysqli_fetch_assoc($CustResult)){ 
                             ?>
                             <tr>
@@ -74,6 +75,24 @@ if(isset($_GET['category'])){
                                 </td>
                             </tr>
                             <?php 
+                                }
+                            }elseif($_GET['category']=='Chef'){
+                                while($rowItem = mysqli_fetch_assoc($ChefResult)){ 
+                            ?>
+                            <tr>
+                                <td class='orderdatas'><?php echo $rowItem['ChefName']; ?></td>
+                                <td class='orderdatas'><?php echo $rowItem['ChefAddress']; ?></td>
+                                <td class='orderdatas'><?php echo $rowItem['ChefEmail']; ?></td>
+                                <td class='orderdatas'><?php echo $rowItem['ChefContactNumber']; ?></td>
+                                <td>
+                                    <form action='ManageCart.php' method='POST'>
+                                        <button name='Remove_Item' class='plusMinusButton'> Deactivate </button>
+                                        <input type='hidden' name='Item_name' value='$value[Item_name]'>
+                                    </form>
+                                </td>
+                            </tr>
+                            <?php 
+                                }
                             }
                             ?>
                         </tbody>
