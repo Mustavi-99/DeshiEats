@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2022 at 01:17 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 7.4.22
+-- Generation Time: Mar 11, 2022 at 07:14 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -58,7 +58,6 @@ CREATE TABLE `chef` (
 --
 
 INSERT INTO `chef` (`ChefID`, `ChefName`, `ChefEmail`, `ChefPassword`, `ChefContactNumber`, `ChefDescription`, `ChefAddress`, `ChefArea`, `ChefImage`) VALUES
-(1, 'New-Chef', 'reaperj42@gmail.com', '123456', '01552321408', 'About Chef', 'Chef/Company Address', 'Chef/Company area', 'Chef Image'),
 (2, 'Homely Chinese', 'homelychinese@gmail.com', '123456', '01552321409', 'Whether you want Fried rice or a banquet with spectacular Chinese food, We serve them all in Homely ', 'abc', 'abc', 'images/DeshiEatsMenu/HomelyChinese/Cover.jpg'),
 (3, 'Food Tong', 'foodtong@gmail.com', '123456', '01552321410', 'Craving light snacks? At our Food Tong, we offer a variety of Bengali snacks prepared in the healthi', 'abc', 'abc', 'images/DeshiEatsMenu/FoodTong/Cover.jpg'),
 (4, 'Ghorowa Shaad', 'ghorowashaad@gmail.com', '123456', '01552321420', 'Ghorowa Shaad brings authentic Bengali homemade dishes to your doorstep! ', 'abc', 'abc', 'images/DeshiEatsMenu/GhorowaShaad/Cover.jpeg'),
@@ -113,12 +112,24 @@ INSERT INTO `customer` (`CustID`, `CustName`, `CustEmail`, `CustPassword`, `Cust
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `developersinfo`
+--
+
+CREATE TABLE `developersinfo` (
+  `DevID` int(11) NOT NULL,
+  `DevName` varchar(256) NOT NULL,
+  `DevImage` varchar(512) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `item`
 --
 
 CREATE TABLE `item` (
   `ItemID` int(11) NOT NULL,
-  `ItemName` varchar(20) NOT NULL,
+  `ItemName` varchar(30) NOT NULL,
   `ShortDescription` varchar(150) NOT NULL,
   `Description` varchar(455) NOT NULL,
   `Price` double NOT NULL,
@@ -133,10 +144,10 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`ItemID`, `ItemName`, `ShortDescription`, `Description`, `Price`, `Quantity`, `OwnerID`, `ItemImage`, `OrderCount`) VALUES
-(1, 'Classic Vanilla Cake', 'Classic Vanilla Cake is made with vanilla sponge, vanilla cream, and mixed fruit jam for the sweet base flavor.', 'Sometimes the best way to go is to stay simple! This Classic Vanilla Cake proves all that, made with vanilla sponge, vanilla cream, and mixed fruit jam for the sweet base flavor, the cake is coated in white icing and designed with icing swirls. Make it more personal when you add your own message to make it a memorable dessert. Order now and have it delivered to you today!', 1000, 10, 5, 'images/DeshiEatsMenu/TheCakeRoom/VanillaCake.jpg', 0),
-(2, 'Classic Chocolate Ca', 'Layers of chocolate sponge stacked up high with a smooth chocolate-flavored cream spread.', 'Layers of chocolate sponge stacked up high with a smooth chocolate-flavored cream spread in between and finished off with cream swirls and chocolate sprinkles. The highlight of this cake is the gorgeous marble effect on the exterior creating a real sweet masterpiece.', 1200, 10, 5, 'images/DeshiEatsMenu/TheCakeRoom/ChocolateCake.jpg', 0),
-(3, 'Black Forest Cake 1 ', 'Light moist chocolate sponge with layers of vanilla confectionery cream and black cherry jam.', 'The Black Forest has been a favorite for us all. A mix of sponge, chocolate, and cherries, it\'s a hard one not to love. Light moist chocolate sponge with layers of vanilla confectionery cream and black cherry jam, covered with more finger-licking good cream and gorgeously glazed cherries, it\'s perfect for a little sweet treat.', 1400, 10, 5, 'images/DeshiEatsMenu/TheCakeRoom/BlackforestCake.jpg', 0),
-(4, 'White Forest Cake 1 ', 'Light vanilla sponge blanketed with smooth vanilla flavored confectionery cream and cherry jam.', 'This cake gives the classic Black Forest cake an impressive spin. Light vanilla sponge blanketed with smooth vanilla flavored confectionery cream and cherry jam, decorated with white chocolate curls covering the entire cake and glace cherries on the top. Have your personalized message piped onto the white chocolate plaque.', 1400, 10, 5, 'images/DeshiEatsMenu/TheCakeRoom/WhiteForest.jpg', 0),
+(1, 'Classic Vanilla Cake 1KG', 'Classic Vanilla Cake is made with vanilla sponge, vanilla cream, and mixed fruit jam for the sweet base flavor.', 'Sometimes the best way to go is to stay simple! This Classic Vanilla Cake proves all that, made with vanilla sponge, vanilla cream, and mixed fruit jam for the sweet base flavor, the cake is coated in white icing and designed with icing swirls. Make it more personal when you add your own message to make it a memorable dessert. Order now and have it delivered to you today!', 1000, 10, 5, 'images/DeshiEatsMenu/TheCakeRoom/VanillaCake.jpg', 0),
+(2, 'Classic Chocolate Cake 1KG', 'Layers of chocolate sponge stacked up high with a smooth chocolate-flavored cream spread.', 'Layers of chocolate sponge stacked up high with a smooth chocolate-flavored cream spread in between and finished off with cream swirls and chocolate sprinkles. The highlight of this cake is the gorgeous marble effect on the exterior creating a real sweet masterpiece.', 1200, 10, 5, 'images/DeshiEatsMenu/TheCakeRoom/ChocolateCake.jpg', 0),
+(3, 'Black Forest Cake 1 KG', 'Light moist chocolate sponge with layers of vanilla confectionery cream and black cherry jam.', 'The Black Forest has been a favorite for us all. A mix of sponge, chocolate, and cherries, it\'s a hard one not to love. Light moist chocolate sponge with layers of vanilla confectionery cream and black cherry jam, covered with more finger-licking good cream and gorgeously glazed cherries, it\'s perfect for a little sweet treat.', 1400, 10, 5, 'images/DeshiEatsMenu/TheCakeRoom/BlackforestCake.jpg', 0),
+(4, 'White Forest Cake 1 KG', 'Light vanilla sponge blanketed with smooth vanilla flavored confectionery cream and cherry jam.', 'This cake gives the classic Black Forest cake an impressive spin. Light vanilla sponge blanketed with smooth vanilla flavored confectionery cream and cherry jam, decorated with white chocolate curls covering the entire cake and glace cherries on the top. Have your personalized message piped onto the white chocolate plaque.', 1400, 10, 5, 'images/DeshiEatsMenu/TheCakeRoom/WhiteForest.jpg', 0),
 (5, 'Red Velvet Cake 1KG', 'Blood red chocolate sponge layered with cream cheese flavored cream.', 'One of our most unique cakes, with the perfect touch of sweetness. Our delicious Red Velvet cake is absolutely indulgent. Blood red chocolate sponge layered with cream cheese flavored cream only to leave you wanting more.', 1500, 10, 5, 'images/DeshiEatsMenu/TheCakeRoom/RedVelvet.jpg', 0),
 (6, 'Shada Vaat', 'Freshly Cooked Basmati Rice', 'Freshly Cooked Basmati Rice. You can pair it up with other dishes.', 100, 10, 10, 'images/DeshiEatsMenu/ChatgaiyaHouse/ShadaVaat.jpg', 0),
 (7, 'Kaala Vuna Beef', 'Prepared with shoulder pieces of beef and traditional spices', 'Kala Bhuna is a famous dark and tender dish native to Chittagong prepared with shoulder pieces of beef and traditional spices.', 400, 10, 10, 'images/DeshiEatsMenu/ChatgaiyaHouse/KalaVunaBeef.JPG', 0),
@@ -165,7 +176,7 @@ INSERT INTO `item` (`ItemID`, `ItemName`, `ShortDescription`, `Description`, `Pr
 (30, 'Bagurar Doi', 'Authentic yogurt from Bagura (Half KG)', 'Authentic yogurt from Bagura.', 250, 10, 9, 'images/DeshiEatsMenu/Misti Mukh/BogurarDoi.jpg', 0),
 (31, 'Halwa Platter', 'Mixed Halwa in a platter.', 'Mixed Halwa in a platter.', 500, 10, 9, 'images/DeshiEatsMenu/Misti Mukh/HalwaPlatter.jpg', 0),
 (32, 'Shondesh Platter', 'A variety of Shondesh sweets in a platter.', 'A variety of Shondesh sweets in a platter.', 500, 10, 9, 'images/DeshiEatsMenu/Misti Mukh/ShondeshPlatter.jpg', 0),
-(33, 'Chinese Chicken Plat', 'Fried rice served with chicken, vegetables, and house special sauce.', 'Fried rice served with chicken, vegetables, and house special sauce.', 350, 10, 2, 'images/DeshiEatsMenu/HomelyChinese/ChickenPlatter.jpg', 0),
+(33, 'Chinese Chicken Platter', 'Fried rice served with chicken, vegetables, and house special sauce.', 'Fried rice served with chicken, vegetables, and house special sauce.', 350, 10, 2, 'images/DeshiEatsMenu/HomelyChinese/ChickenPlatter.jpg', 0),
 (34, 'Chinese Beef Platter', 'Fried rice served with beef steak, vegetables, and house special sauce.', 'Fried rice served with beef steak, vegetables, and house special sauce.', 450, 10, 2, 'images/DeshiEatsMenu/HomelyChinese/BeefPlatter.jpg', 0),
 (35, 'Prawn Platter', 'Fried rice served with Prawn curry, vegetables, and house special sauce.', 'Fried rice served with Prawn curry, vegetables, and house special sauce.', 450, 10, 2, 'images/DeshiEatsMenu/HomelyChinese/PrawnPlatter.jpg', 0),
 (36, 'Chinese Fish Platter', 'Fried rice served with fish curry, vegetables, and house special sauce.', 'Fried rice served with fish curry, vegetables, and house special sauce.', 400, 10, 2, 'images/DeshiEatsMenu/HomelyChinese/FishPlatter.jpg', 0),
@@ -247,6 +258,12 @@ ALTER TABLE `customer`
   ADD PRIMARY KEY (`CustID`);
 
 --
+-- Indexes for table `developersinfo`
+--
+ALTER TABLE `developersinfo`
+  ADD PRIMARY KEY (`DevID`);
+
+--
 -- Indexes for table `item`
 --
 ALTER TABLE `item`
@@ -291,6 +308,12 @@ ALTER TABLE `contactus`
 --
 ALTER TABLE `customer`
   MODIFY `CustID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `developersinfo`
+--
+ALTER TABLE `developersinfo`
+  MODIFY `DevID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `item`
