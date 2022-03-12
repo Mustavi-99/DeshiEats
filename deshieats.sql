@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2022 at 06:11 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.3
+-- Generation Time: Mar 12, 2022 at 06:37 AM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 7.4.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -47,7 +46,7 @@ CREATE TABLE `chef` (
   `ChefName` varchar(50) NOT NULL,
   `ChefEmail` varchar(50) NOT NULL,
   `ChefPassword` varchar(50) NOT NULL,
-  `ChefContactNumber` int(15) NOT NULL,
+  `ChefContactNumber` varchar(11) NOT NULL,
   `ChefDescription` varchar(100) NOT NULL,
   `ChefAddress` varchar(50) NOT NULL,
   `ChefArea` varchar(50) NOT NULL,
@@ -60,17 +59,17 @@ CREATE TABLE `chef` (
 --
 
 INSERT INTO `chef` (`ChefID`, `ChefName`, `ChefEmail`, `ChefPassword`, `ChefContactNumber`, `ChefDescription`, `ChefAddress`, `ChefArea`, `ChefImage`, `Status`) VALUES
-(1, 'New-Chef', 'reaperj42@gmail.com', '123456', 1552321408, 'About Chef', 'Chef/Company Address', 'Chef/Company area', 'Chef Image', 'Banned'),
-(2, 'Homely Chinese', 'xyz@gmail.com', '123456', 1, 'Whether you want Fried rice or a banquet with spectacular Chinese food, We serve them all in Homely ', 'abc', 'abc', 'images/DeshiEatsMenu/HomelyChinese/Cover.jpg', 'Active'),
-(3, 'Food Tong', 'abcf@gmail.com', '12345688', 2147483647, 'Craving light snacks? At our Food Tong, we offer a variety of Bengali snacks prepared in the healthi', 'Dhanmondi-1205,Dhaka,Bangladesh', 'abc', 'images/Uploaded/3Cover.jpg', 'Active'),
-(4, 'Ghorowa Shaad', 'xyz@gmail.com', '123456', 1, 'Ghorowa Shaad brings authentic Bengali homemade dishes to your doorstep! ', 'abc', 'abc', 'images/DeshiEatsMenu/GhorowaShaad/Cover.jpeg', 'Active'),
-(5, 'The Cake Room', 'xyz@gmail.com', '123456', 1, 'At The Cake Room, we are all about being able to provide the joy and happiness that occurs when the ', 'abc', 'abc', 'images/DeshiEatsMenu/TheCakeRoom/Cover.jpg', 'Active'),
-(6, 'Pitha Ghor', 'xyz@gmail.com', '123456', 1, 'Pitha Shop provides different types of Pitha with original tastes. Buy Pitha online to surprise your', 'abc', 'abc', 'images/DeshiEatsMenu/PithaGhor/Cover.jpg', 'Active'),
-(7, 'Foodies Fastfood', 'xyz@gmail.com', '123456', 1, 'Have the perfect fastfood for your hangout and chills!', 'abc', 'abc', 'images/DeshiEatsMenu/FoodiesFastfood/Cover.jfif', 'Active'),
-(8, 'Maryam\'s Momo Inn', 'xyz@gmail.com', '123456', 1, 'We cook authentic and tasty dumplings in various flavors! Be a vegan or non-vegan, we have dumplings', 'abc', 'abc', 'images/DeshiEatsMenu/MaryamsMomoInn/Cover.jfif', 'Active'),
-(9, 'Misti Mukh', 'xyz@gmail.com', '123456', 1, 'We offer authentic Bengali desserts to please your sweet tooth. Whether you are craving sweets or lo', 'abc', 'abc', 'images/DeshiEatsMenu/MistiMukh/Cover.jpg', 'Active'),
-(10, 'Chatgaiya House', 'xyz@gmail.com', '123456', 1, 'We, at Chatgaiya House, are aimed to serve you the most authentic traditional cuisine from Chottogra', 'abc', 'abc', 'images/DeshiEatsMenu/ChatgaiyaHouse/Cover.jpg', 'Active'),
-(11, 'EatSylheti', 'xyz@gmail.com', '123456', 1, 'Taste the best Sylheti Cuisine at EatSylheti. Our very own Sylheti chefs cook authentic and deliciou', 'abc', 'abc', 'images/DeshiEatsMenu/EatSylheti/Cover.jpg', 'Active');
+(1, 'New-Chef', 'reaperj42@gmail.com', '123456', '01552321408', 'About Chef', 'Chef/Company Address', 'Chef/Company area', 'Chef Image', 'Banned'),
+(2, 'Homely Chinese', 'xyz@gmail.com', '123456', '1', 'Whether you want Fried rice or a banquet with spectacular Chinese food, We serve them all in Homely ', 'abc', 'abc', 'images/DeshiEatsMenu/HomelyChinese/Cover.jpg', 'Active'),
+(3, 'Food Tong', 'abcf@gmail.com', '12345688', '2147483647', 'Craving light snacks? At our Food Tong, we offer a variety of Bengali snacks prepared in the healthi', 'Dhanmondi-1205,Dhaka,Bangladesh', 'abc', 'images/Uploaded/3Cover.jpg', 'Active'),
+(4, 'Ghorowa Shaad', 'xyz@gmail.com', '123456', '1', 'Ghorowa Shaad brings authentic Bengali homemade dishes to your doorstep! ', 'abc', 'abc', 'images/DeshiEatsMenu/GhorowaShaad/Cover.jpeg', 'Active'),
+(5, 'The Cake Room', 'xyz@gmail.com', '123456', '1', 'At The Cake Room, we are all about being able to provide the joy and happiness that occurs when the ', 'abc', 'abc', 'images/DeshiEatsMenu/TheCakeRoom/Cover.jpg', 'Active'),
+(6, 'Pitha Ghor', 'xyz@gmail.com', '123456', '1', 'Pitha Shop provides different types of Pitha with original tastes. Buy Pitha online to surprise your', 'abc', 'abc', 'images/DeshiEatsMenu/PithaGhor/Cover.jpg', 'Active'),
+(7, 'Foodies Fastfood', 'xyz@gmail.com', '123456', '1', 'Have the perfect fastfood for your hangout and chills!', 'abc', 'abc', 'images/DeshiEatsMenu/FoodiesFastfood/Cover.jfif', 'Active'),
+(8, 'Maryam\'s Momo Inn', 'xyz@gmail.com', '123456', '1', 'We cook authentic and tasty dumplings in various flavors! Be a vegan or non-vegan, we have dumplings', 'abc', 'abc', 'images/DeshiEatsMenu/MaryamsMomoInn/Cover.jfif', 'Active'),
+(9, 'Misti Mukh', 'xyz@gmail.com', '123456', '1', 'We offer authentic Bengali desserts to please your sweet tooth. Whether you are craving sweets or lo', 'abc', 'abc', 'images/DeshiEatsMenu/MistiMukh/Cover.jpg', 'Active'),
+(10, 'Chatgaiya House', 'xyz@gmail.com', '123456', '1', 'We, at Chatgaiya House, are aimed to serve you the most authentic traditional cuisine from Chottogra', 'abc', 'abc', 'images/DeshiEatsMenu/ChatgaiyaHouse/Cover.jpg', 'Active'),
+(11, 'EatSylheti', 'xyz@gmail.com', '123456', '1', 'Taste the best Sylheti Cuisine at EatSylheti. Our very own Sylheti chefs cook authentic and deliciou', 'abc', 'abc', 'images/DeshiEatsMenu/EatSylheti/Cover.jpg', 'Active');
 
 -- --------------------------------------------------------
 
