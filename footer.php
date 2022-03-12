@@ -17,15 +17,15 @@
                   <p>
                     <a class="footwrite" href="Register.php">Register</a>
                   </p>
-                  <p>
+                  <!-- <p>
                     <a class="footwrite" href="#">Order</a>
-                  </p>
+                  </p> -->
                   <p>
                     <a class="footwrite" href="AboutUs.php">About</a>
                   </p>
-                  <p>
+                  <!-- <p>
                     <a class="footwrite" href="#">Devs Corner</a>
-                  </p>
+                  </p> -->
                   <p>
                     <a class="footwrite" href="Contact.php">Contact Us</a>
                   </p>
