@@ -9,19 +9,19 @@
                 </div>
                 <div class="col-md-4 text-center">
                   <p>
-                    <a class="footwrite" href="Index.html">Home</a>
+                    <a class="footwrite" href="Index.php">Home</a>
                   </p>
                   <p>
-                    <a class="footwrite" href="Menu.html">Menu</a>
+                    <a class="footwrite" href="Menu.php">Menu</a>
                   </p>
                   <p>
-                    <a class="footwrite" href="Register.html">Register</a>
+                    <a class="footwrite" href="Register.php">Register</a>
                   </p>
                   <p>
                     <a class="footwrite" href="#">Order</a>
                   </p>
                   <p>
-                    <a class="footwrite" href="#">About</a>
+                    <a class="footwrite" href="AboutUs.php">About</a>
                   </p>
                   <p>
                     <a class="footwrite" href="#">Devs Corner</a>
