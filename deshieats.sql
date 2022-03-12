@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2022 at 06:37 AM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 7.4.22
+-- Generation Time: Mar 12, 2022 at 07:48 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -112,6 +112,29 @@ INSERT INTO `customer` (`CustID`, `CustName`, `CustEmail`, `CustPassword`, `Cust
 (2, 'Mustavi Ibn Masum', 'mutabi@gmail.com', '1234568', '018142042042', 0, 'House:40, Road:1, Dhaka-1215', 'Farmgate', 'Active'),
 (3, 'Abdullah Noman', 'newman@gmail.com', '123456', '01552321409', 0, 'House:42, Road:2, Dhaka-1212', 'Gulshan', 'Active'),
 (4, 'Pikka Chuuu', 'pikapik@pokemon.com', '123', '12345678910', 0, 'Ash ketchum Avenue', 'Poke world', 'Active');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `developersinfo`
+--
+
+CREATE TABLE `developersinfo` (
+  `DevID` int(11) NOT NULL,
+  `DevName` varchar(255) NOT NULL,
+  `DevImage` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `developersinfo`
+--
+
+INSERT INTO `developersinfo` (`DevID`, `DevName`, `DevImage`) VALUES
+(1, 'Abdullah Al Noman', 'images\\DevelopersImage\\Dev3.jpg'),
+(2, 'Sanjay Kumar Mandal', 'images\\DevelopersImage\\Dev4.jpg'),
+(3, 'Ashfiqun Mustari', 'images\\DevelopersImage\\Dev1.jpg'),
+(4, 'Mustavi Ibne Masum', 'images\\DevelopersImage\\Dev2.jpg'),
+(5, 'Neloy Barman', 'images\\DevelopersImage\\Dev5.jpg');
 
 -- --------------------------------------------------------
 
@@ -251,6 +274,12 @@ ALTER TABLE `customer`
   ADD PRIMARY KEY (`CustID`);
 
 --
+-- Indexes for table `developersinfo`
+--
+ALTER TABLE `developersinfo`
+  ADD PRIMARY KEY (`DevID`);
+
+--
 -- Indexes for table `item`
 --
 ALTER TABLE `item`
@@ -295,6 +324,12 @@ ALTER TABLE `contactus`
 --
 ALTER TABLE `customer`
   MODIFY `CustID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `developersinfo`
+--
+ALTER TABLE `developersinfo`
+  MODIFY `DevID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `item`
