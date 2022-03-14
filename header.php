@@ -28,7 +28,7 @@
                        </li>";
               echo "<li class='nav-item'><a class='nav-link navwrite' href='Menu.php'>Menu</a>
                       </li>
-                      <li class='nav-item'><a class='nav-link navwrite' href='#'>Order</a>
+                      <li class='nav-item'><a class='nav-link navwrite' href='Order.php'>Order</a>
                       </li>
                       <li class='nav-item'><a class='nav-link navwrite' href='Contact.php'>Contact Us</a>
             </li>";

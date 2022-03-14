@@ -15,10 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
     }
 
 
-    $name =  $_POST['username'];
-    $contact = $_POST['usercontact'];
+    //$name =  $_POST['username'];
+    //$contact = $_POST['usercontact'];
     $useraddress = $_POST['useraddress'];
-    $usermessage = $_POST['usermessage'];
+    //$usermessage = $_POST['usermessage'];
     $finalTotal = $_POST['finalTotal'];
     $stats="Pending";
 
@@ -59,9 +59,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
 
                 $item=$z['Item_name'] ;
                 $qty=$z['Quantity'] ;
+                (double)$price=(double)$z['Item_price'] * (double)$z['Quantity'];
         
-                $Query3="INSERT INTO cartlist(OrderID, ItemName, Quantity, TotalPrice) VALUES ('$orderID','$item','$qty','$finalTotal')";
-                echo $Query3;
+                $Query3="INSERT INTO cartlist(OrderID, ItemName, Quantity, TotalPrice) VALUES ('$orderID','$item','$qty','$price')";
+                //echo $Query3;
                 mysqli_query($link,$Query3);
             }
             unset($_SESSION['cart']);
@@ -169,21 +170,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
 
 
             <form action="" method="POST">
-                <div class="col-xl-12">
-                    <div class="mt-3 mb-3">
-                        <label class="mb-2 orderhead">Recipient Name</label>
-                        <input type="text" placeholder="Enter your name" name="username" value="" class="form-control" required />
-                    </div>
-                </div>
+                
 
-
-                <div class="col-xl-12">
-                    <div class=" mb-3">
-                        <label class="mb-2 orderhead">Contact Number</label>
-                        <input type="text" placeholder="Enter your contact number" name="usercontact" value="" class="form-control tbox" />
-                    </div>
-                </div>
-
+                
                 <div class="col-xl-12">
                     <div class="mb-3">
                         <label class="mb-2 orderhead">Enter Address</label>
@@ -191,19 +180,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
                     </div>
                 </div>
 
-                <div class="col-xl-12">
-                    <div class="mb-3">
-                        <label class="mb-2 orderhead">Enter message</label>
-                        <textarea name="usermessage" placeholder="Enter any message if you wish to" class="form-control"> </textarea>
-                    </div>
-                </div>
-                <div class="col-xl-12" style="display:none">
-                    <div class=" mb-3">
-                        <label class="mb-2 orderhead">Contact Number</label>
-                        <input type="text" placeholder="Enter your contact number" id="finalTotal" name="finalTotal" value="" class="form-control" />
-                    </div>
-                </div>
-
+                
                 <div class="col-xl-12 ">
                     <div class="border bd-light rounded p-4 orderdatas d-flex flex-column align-items-center totalbox">
                         <h5>Grand Total:</h5>
