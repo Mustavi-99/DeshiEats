@@ -81,7 +81,7 @@ if(isset($_SESSION["ID"])){
                                     <td class='orderdatas'><?php echo $row['ItemName']; ?></td>
                                     <td class='orderdatas'><?php echo $row['TotalPrice'];   ?></td>
                                     <td class='orderdatas'><?php echo $row['OrderAddress'];     ?></td>
-                                    <td class='orderdatas'><?php echo $row['Status'];       ?></td>
+                                    <td class='orderdatas'><?php echo $row['CartStatus'];       ?></td>
                                     <td class='orderdatas'><?php echo $row['DeliveryDate'];       ?></td>
                                 </tr>
                                 <?php 

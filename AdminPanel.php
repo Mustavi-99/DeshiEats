@@ -69,7 +69,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['Item_name'])){
         <?php
     }
 }
+$customercountsql = "SELECT COUNT(CustID) as countcus FROM customer where 1";
+$customercountresult= mysqli_fetch_assoc(mysqli_query($link,$customercountsql));
 
+$chefcountsql = "SELECT COUNT(ChefID) as countcus FROM chef where 1";
+$chefcountresult= mysqli_fetch_assoc(mysqli_query($link,$chefcountsql));
+
+$ordercountsql = "SELECT COUNT(ID) as countcus FROM cartlist where 1";
+$ordercountresult= mysqli_fetch_assoc(mysqli_query($link,$ordercountsql));
+
+$revenue = "SELECT * FROM revenue";
+$rev = mysqli_fetch_assoc(mysqli_query($link,$revenue))
 ?>
 <!DOCTYPE html>
 <html>
@@ -109,24 +119,38 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['Item_name'])){
 
                 <div class="col-md text-center" id="Grid1">
                     <img class="icon1 rounded-circle" src="images/Admin/customerIcon.png">
-                    <h5 id="t2">#Number</h5>
+                    <h5 id="t2"><?php echo $chefcountresult["countcus"]?></h5>
+                    <p id="t2">Kitchen Owners</p>
+                </div>
+
+                <div class="col-md text-center" id="Grid1">
+                    <img class="icon1 rounded-circle" src="images/Admin/customerIcon.png">
+                    <h5 id="t2"><?php echo $customercountresult["countcus"]?></h5>
                     <p id="t2">Customers</p>
                 </div>
 
 
                 <div class="col-md text-center" id="Grid1">
                     <img class="icon1 rounded-circle" src="images/Admin/orderIcon.png">
-                    <h5 id="t2">#Number</h5>
+                    <h5 id="t2"><?php echo $ordercountresult["countcus"]?></h5>
                     <p id="t2">Total Orders</p>
                 </div>
-
-
                 <div class="col-md text-center" id="Grid1">
                     <img class="icon1 rounded-circle" src="images/Admin/revIcon.png">
-                    <h5 id="t2">#rev</h5>
+                    <h5 id="t2"><?php echo $rev["RValue"]?></h5>
                     <p id="t2">Net Revenue</p>
                 </div>
-
+                <div class="col-md-12 text-left">
+                        <a style="text-decoration:none" href="AssignRiders.php">
+                            <p id="t2">Assign Riders>></p>
+                        </a>
+                </div>
+                <div class="col-md-12 text-left">
+                        <a style="text-decoration:none" href="AssignedRiders.php">
+                            <p id="t2">Assigned Riders>></p>
+                        </a>
+                </div>
+                
                 <div class="col-md-12 text-left">
                     <div class="title2">
                         <h2 id="t2">Top chefs</h2>

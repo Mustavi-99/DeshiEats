@@ -106,7 +106,7 @@ $results = mysqli_query($link, $query);
               <form action="ManageCart.php" method="POST">
                 <div class="allthings card-body text-center d-flex flex-column align-items-center">
 
-                  <button type="submit" name="Add_To_Cart" class="cartButton"> Add To Cart</button>
+                  <button type="submit" name="Add_To_Cart" class="cartButton addtocart"> Add To Cart<i class="fas fa-shopping-cart"></i></button>
                   <input type="hidden" name="Item_name" value="<?= $row['ItemName'] ?>">
                   <input type="hidden" name="Item_price" value="<?= $row['Price'] ?>">
                 </div>

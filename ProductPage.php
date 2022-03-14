@@ -72,7 +72,7 @@ if(isset($_SESSION["ID"])){
                             <a href="CustomerChefView.php?chefID=<?php echo $row["OwnerID"]?>" style="text-decoration: none;">
                             <p class="prepared allpwrite">Prepared by <?php  echo $rowOwner["ChefName"]?></p>
                             </a>
-                            <div class="ppall">
+                            <!-- <div class="ppall">
                                 <p class="quan allpwrite addalliconsp">Quantity</p>
                                 <button class="minusplus">
                                   <i class="addallicons fas fa-minus quantity"></i>
@@ -85,7 +85,7 @@ if(isset($_SESSION["ID"])){
                               <button class="addtocart">
                                 <p class="">ADD TO CART</p>
                                 <i class="fas fa-shopping-cart"></i>
-                              </button>
+                              </button> -->
                         </div>
                     </div>
                 </div>

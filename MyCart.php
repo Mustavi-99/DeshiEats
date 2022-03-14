@@ -6,15 +6,34 @@ include("connect.php");
 $price = 0;
 $count = 0;
 
+if(!isset($_SESSION['cart']))
+{
+    echo "<script>
+            alert('No item in cart');
+            window.location.href='Menu.php';
+            </script>";
+}
+if (isset($_SESSION['ID'])) {
+    $user_id = $_SESSION['ID'];
+    $namesql = "SELECT * FROM CUSTOMER WHERE CustID= ".$user_id;
+    $nameresult = mysqli_query($link,$namesql);
+    $nameUser = mysqli_fetch_assoc($nameresult);
+}else{
+    echo "<script>
+            alert('User needs to log in');
+            window.location.href='Menu.php';
+            </script>";
+}
+
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
 
 
     if (isset($_SESSION['ID'])) {
         $user_id = $_SESSION['ID'];
+
     }
-
-
+    
     //$name =  $_POST['username'];
     //$contact = $_POST['usercontact'];
     $useraddress = $_POST['useraddress'];
@@ -36,11 +55,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
     }
 
     $date = date('Y-m-d', strtotime('+7 days'));
-    echo $date;
+    // echo $date;
     $instruction = $_POST['paymentSystem'];
 
     if (!empty($user_id) && !empty($useraddress) &&  !empty($finalTotal) && !empty($ItemNames)) {
-        $Query="INSERT INTO orderlist(CustomerID, OrderAddress, Status, OrderPrice, DeliveryDate, DeliveryInstruction) VALUES ('$user_id','$useraddress','$stats','$finalTotal','$date','$instruction')";
+        $Query="INSERT INTO orderlist(CustomerID, OrderAddress, OrderStatus, OrderPrice, DeliveryDate, DeliveryInstruction) VALUES ('$user_id','$useraddress','$stats','$finalTotal','$date','$instruction')";
         
 
 
@@ -60,9 +79,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
 
                 $item = $z['Item_name'];
                 $qty = $z['Quantity'];
+                
                 (float)$price = (float)$z['Item_price'] * (float)$z['Quantity'];
 
-                $Query3 = "INSERT INTO cartlist(OrderID, ItemName, Quantity, TotalPrice) VALUES ('$orderID','$item','$qty','$price')";
+                $Query3 = "INSERT INTO cartlist(OrderID, ItemName, Quantity, TotalPrice,CartStatus) VALUES ('$orderID','$item','$qty','$price','Pending')";
                 //echo $Query3;
                 mysqli_query($link, $Query3);
             }
@@ -119,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
 
             <div class="col-11 userprofiledit ">
                 <div class="userprofileheading mt-4">
-                    <p class="userprofileheadinguser">#Name, Your Cart:</p>
+                    <p class="userprofileheadinguser"><?php echo $nameUser["CustName"]?>, Your Cart:</p>
                 </div>
             </div>
             <div class="col-xl-12">
@@ -147,14 +167,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
                                 <tr>
                                 <td class='orderdatas'>$serial</td>
                                 <td class='orderdatas'>$value[Item_name]</td>
-                                <td class='orderdatas'>$value[Item_price]<input type='hidden' class='iprice' value='$value[Item_price]'</td>
+                                <td class='orderdatas'>$value[Item_price]<input type='hidden' class='iprice' value='$value[Item_price]'/></td>
                                 <td class='orderdatas'>
-                                    <input class='text-center iquantity' onchange='subTotal()' type='number' value='$value[Quantity]' min='1' max= '20'>
+                                    <input class='text-center iquantity' onchange='subTotal()' type='number' name='Quantity' value='$value[Quantity]' min='1' max= '20'/>
                                 </td>
                                 <td class='itotal orderdatas'></td>
                                 <td>
                                   <form action='ManageCart.php' method='POST'>
                                     <button name='Remove_Item' class='plusMinusButton'> REMOVE </button>
+                                    <input type='hidden' class='iquantity' name='Quantity' value='$value[Quantity]'>
                                     <input type='hidden' name='Item_name' value='$value[Item_name]'>
                                   </form>
                                 </td>
