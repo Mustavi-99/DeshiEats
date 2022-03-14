@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
     $useraddress = $_POST['useraddress'];
     //$usermessage = $_POST['usermessage'];
     $finalTotal = $_POST['finalTotal'];
-    $stats="Pending";
+    $stats = "Pending";
 
     //echo $user_id . " " . $contact . " " . $useraddress . " " . $usermessage . " " . $finalTotal;
 
@@ -37,44 +37,43 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
 
     $date = date('Y-m-d', strtotime('+7 days'));
     echo $date;
-    $instruction='Cash on Delivery';
+    $instruction = 'Cash on Delivery';
 
     if (!empty($user_id) && !empty($useraddress) &&  !empty($finalTotal) && !empty($ItemNames)) {
         $Query="INSERT INTO orderlist(CustomerID, OrderAddress, Status, OrderPrice, DeliveryDate, DeliveryInstruction) VALUES ('$user_id','$useraddress','$stats','$finalTotal','$date','$instruction')";
         
 
-        if(mysqli_query($link, $Query)){
+
+        if (mysqli_query($link, $Query)) {
             //unset($_SESSION['cart']);
             echo "<script>
             alert('Checked out');
             //window.location.href='Menu.php';
             </script>";
-            
-            $Query2="SELECT * FROM orderlist ORDER BY OrderID DESC LIMIT 1";
-            $result = mysqli_query($link,$Query2);
+
+            $Query2 = "SELECT * FROM orderlist ORDER BY OrderID DESC LIMIT 1";
+            $result = mysqli_query($link, $Query2);
             $row = mysqli_fetch_assoc($result);
-            $orderID=$row['OrderID'];
-            
+            $orderID = $row['OrderID'];
+
             foreach ($_SESSION['cart'] as $x => $z) {
 
-                $item=$z['Item_name'] ;
-                $qty=$z['Quantity'] ;
-                (double)$price=(double)$z['Item_price'] * (double)$z['Quantity'];
-        
-                $Query3="INSERT INTO cartlist(OrderID, ItemName, Quantity, TotalPrice) VALUES ('$orderID','$item','$qty','$price')";
+                $item = $z['Item_name'];
+                $qty = $z['Quantity'];
+                (float)$price = (float)$z['Item_price'] * (float)$z['Quantity'];
+
+                $Query3 = "INSERT INTO cartlist(OrderID, ItemName, Quantity, TotalPrice) VALUES ('$orderID','$item','$qty','$price')";
                 //echo $Query3;
-                mysqli_query($link,$Query3);
+                mysqli_query($link, $Query3);
             }
             unset($_SESSION['cart']);
-            
-        }else{
+        } else {
             unset($_SESSION['cart']);
             echo "<script>
             alert('Error!');
             //window.location.href='Menu.php';
             </script>";
         }
-
     }
 }
 
@@ -170,17 +169,21 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
 
 
             <form action="" method="POST">
-                
 
-                
+
+
                 <div class="col-xl-12">
-                    <div class="mb-3">
+                    <div class="mb-3 orderdatas">
                         <label class="mb-2 orderhead">Enter Address</label>
                         <textarea name="useraddress" placeholder="Enter your full address" class="form-control"> </textarea>
+                        <br>
+                        Cash on Delivery <input type="radio" name="paymentSystem" value="Cash On Delivery">
+                        <br>
+                        Digital Payment <input type="radio" name="paymentSystem" value="Digital Payment">
                     </div>
                 </div>
 
-                
+
                 <div class="col-xl-12 ">
                     <div class="border bd-light rounded p-4 orderdatas d-flex flex-column align-items-center totalbox">
                         <h5>Grand Total:</h5>
