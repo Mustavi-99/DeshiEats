@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2022 at 07:48 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.23
+-- Generation Time: Mar 14, 2022 at 05:56 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,10 +31,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `cartlist` (
   `ID` int(11) NOT NULL,
   `OrderID` int(11) NOT NULL,
-  `ItemID` int(11) NOT NULL,
+  `ItemName` varchar(50) NOT NULL,
   `Quantity` int(11) NOT NULL,
   `TotalPrice` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cartlist`
+--
+
+INSERT INTO `cartlist` (`ID`, `OrderID`, `ItemName`, `Quantity`, `TotalPrice`) VALUES
+(1, 4, 'Classic Vanilla Cake', 1, 2800),
+(2, 4, 'Kaala Vuna Beef', 1, 2800),
+(3, 4, 'Black Forest Cake 1 ', 1, 2800);
 
 -- --------------------------------------------------------
 
@@ -46,7 +56,7 @@ CREATE TABLE `chef` (
   `ChefName` varchar(50) NOT NULL,
   `ChefEmail` varchar(50) NOT NULL,
   `ChefPassword` varchar(50) NOT NULL,
-  `ChefContactNumber` varchar(11) NOT NULL,
+  `ChefContactNumber` int(15) NOT NULL,
   `ChefDescription` varchar(100) NOT NULL,
   `ChefAddress` varchar(50) NOT NULL,
   `ChefArea` varchar(50) NOT NULL,
@@ -59,17 +69,17 @@ CREATE TABLE `chef` (
 --
 
 INSERT INTO `chef` (`ChefID`, `ChefName`, `ChefEmail`, `ChefPassword`, `ChefContactNumber`, `ChefDescription`, `ChefAddress`, `ChefArea`, `ChefImage`, `Status`) VALUES
-(1, 'New-Chef', 'reaperj42@gmail.com', '123456', '01552321408', 'About Chef', 'Chef/Company Address', 'Chef/Company area', 'Chef Image', 'Banned'),
-(2, 'Homely Chinese', 'xyz@gmail.com', '123456', '1', 'Whether you want Fried rice or a banquet with spectacular Chinese food, We serve them all in Homely ', 'abc', 'abc', 'images/DeshiEatsMenu/HomelyChinese/Cover.jpg', 'Active'),
-(3, 'Food Tong', 'abcf@gmail.com', '12345688', '2147483647', 'Craving light snacks? At our Food Tong, we offer a variety of Bengali snacks prepared in the healthi', 'Dhanmondi-1205,Dhaka,Bangladesh', 'abc', 'images/Uploaded/3Cover.jpg', 'Active'),
-(4, 'Ghorowa Shaad', 'xyz@gmail.com', '123456', '1', 'Ghorowa Shaad brings authentic Bengali homemade dishes to your doorstep! ', 'abc', 'abc', 'images/DeshiEatsMenu/GhorowaShaad/Cover.jpeg', 'Active'),
-(5, 'The Cake Room', 'xyz@gmail.com', '123456', '1', 'At The Cake Room, we are all about being able to provide the joy and happiness that occurs when the ', 'abc', 'abc', 'images/DeshiEatsMenu/TheCakeRoom/Cover.jpg', 'Active'),
-(6, 'Pitha Ghor', 'xyz@gmail.com', '123456', '1', 'Pitha Shop provides different types of Pitha with original tastes. Buy Pitha online to surprise your', 'abc', 'abc', 'images/DeshiEatsMenu/PithaGhor/Cover.jpg', 'Active'),
-(7, 'Foodies Fastfood', 'xyz@gmail.com', '123456', '1', 'Have the perfect fastfood for your hangout and chills!', 'abc', 'abc', 'images/DeshiEatsMenu/FoodiesFastfood/Cover.jfif', 'Active'),
-(8, 'Maryam\'s Momo Inn', 'xyz@gmail.com', '123456', '1', 'We cook authentic and tasty dumplings in various flavors! Be a vegan or non-vegan, we have dumplings', 'abc', 'abc', 'images/DeshiEatsMenu/MaryamsMomoInn/Cover.jfif', 'Active'),
-(9, 'Misti Mukh', 'xyz@gmail.com', '123456', '1', 'We offer authentic Bengali desserts to please your sweet tooth. Whether you are craving sweets or lo', 'abc', 'abc', 'images/DeshiEatsMenu/MistiMukh/Cover.jpg', 'Active'),
-(10, 'Chatgaiya House', 'xyz@gmail.com', '123456', '1', 'We, at Chatgaiya House, are aimed to serve you the most authentic traditional cuisine from Chottogra', 'abc', 'abc', 'images/DeshiEatsMenu/ChatgaiyaHouse/Cover.jpg', 'Active'),
-(11, 'EatSylheti', 'xyz@gmail.com', '123456', '1', 'Taste the best Sylheti Cuisine at EatSylheti. Our very own Sylheti chefs cook authentic and deliciou', 'abc', 'abc', 'images/DeshiEatsMenu/EatSylheti/Cover.jpg', 'Active');
+(1, 'New-Chef', 'reaperj42@gmail.com', '123456', 1552321408, 'About Chef', 'Chef/Company Address', 'Chef/Company area', 'Chef Image', 'Banned'),
+(2, 'Homely Chinese', 'xyz@gmail.com', '123456', 1, 'Whether you want Fried rice or a banquet with spectacular Chinese food, We serve them all in Homely ', 'abc', 'abc', 'images/DeshiEatsMenu/HomelyChinese/Cover.jpg', 'Active'),
+(3, 'Food Tong', 'abcf@gmail.com', '12345688', 2147483647, 'Craving light snacks? At our Food Tong, we offer a variety of Bengali snacks prepared in the healthi', 'Dhanmondi-1205,Dhaka,Bangladesh', 'abc', 'images/Uploaded/3Cover.jpg', 'Active'),
+(4, 'Ghorowa Shaad', 'xyz@gmail.com', '123456', 1, 'Ghorowa Shaad brings authentic Bengali homemade dishes to your doorstep! ', 'abc', 'abc', 'images/DeshiEatsMenu/GhorowaShaad/Cover.jpeg', 'Active'),
+(5, 'The Cake Room', 'xyz@gmail.com', '123456', 1, 'At The Cake Room, we are all about being able to provide the joy and happiness that occurs when the ', 'abc', 'abc', 'images/DeshiEatsMenu/TheCakeRoom/Cover.jpg', 'Active'),
+(6, 'Pitha Ghor', 'xyz@gmail.com', '123456', 1, 'Pitha Shop provides different types of Pitha with original tastes. Buy Pitha online to surprise your', 'abc', 'abc', 'images/DeshiEatsMenu/PithaGhor/Cover.jpg', 'Active'),
+(7, 'Foodies Fastfood', 'xyz@gmail.com', '123456', 1, 'Have the perfect fastfood for your hangout and chills!', 'abc', 'abc', 'images/DeshiEatsMenu/FoodiesFastfood/Cover.jfif', 'Active'),
+(8, 'Maryam\'s Momo Inn', 'xyz@gmail.com', '123456', 1, 'We cook authentic and tasty dumplings in various flavors! Be a vegan or non-vegan, we have dumplings', 'abc', 'abc', 'images/DeshiEatsMenu/MaryamsMomoInn/Cover.jfif', 'Active'),
+(9, 'Misti Mukh', 'xyz@gmail.com', '123456', 1, 'We offer authentic Bengali desserts to please your sweet tooth. Whether you are craving sweets or lo', 'abc', 'abc', 'images/DeshiEatsMenu/MistiMukh/Cover.jpg', 'Active'),
+(10, 'Chatgaiya House', 'xyz@gmail.com', '123456', 1, 'We, at Chatgaiya House, are aimed to serve you the most authentic traditional cuisine from Chottogra', 'abc', 'abc', 'images/DeshiEatsMenu/ChatgaiyaHouse/Cover.jpg', 'Active'),
+(11, 'EatSylheti', 'xyz@gmail.com', '123456', 1, 'Taste the best Sylheti Cuisine at EatSylheti. Our very own Sylheti chefs cook authentic and deliciou', 'abc', 'abc', 'images/DeshiEatsMenu/EatSylheti/Cover.jpg', 'Active');
 
 -- --------------------------------------------------------
 
@@ -112,29 +122,6 @@ INSERT INTO `customer` (`CustID`, `CustName`, `CustEmail`, `CustPassword`, `Cust
 (2, 'Mustavi Ibn Masum', 'mutabi@gmail.com', '1234568', '018142042042', 0, 'House:40, Road:1, Dhaka-1215', 'Farmgate', 'Active'),
 (3, 'Abdullah Noman', 'newman@gmail.com', '123456', '01552321409', 0, 'House:42, Road:2, Dhaka-1212', 'Gulshan', 'Active'),
 (4, 'Pikka Chuuu', 'pikapik@pokemon.com', '123', '12345678910', 0, 'Ash ketchum Avenue', 'Poke world', 'Active');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `developersinfo`
---
-
-CREATE TABLE `developersinfo` (
-  `DevID` int(11) NOT NULL,
-  `DevName` varchar(255) NOT NULL,
-  `DevImage` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `developersinfo`
---
-
-INSERT INTO `developersinfo` (`DevID`, `DevName`, `DevImage`) VALUES
-(1, 'Abdullah Al Noman', 'images\\DevelopersImage\\Dev3.jpg'),
-(2, 'Sanjay Kumar Mandal', 'images\\DevelopersImage\\Dev4.jpg'),
-(3, 'Ashfiqun Mustari', 'images\\DevelopersImage\\Dev1.jpg'),
-(4, 'Mustavi Ibne Masum', 'images\\DevelopersImage\\Dev2.jpg'),
-(5, 'Neloy Barman', 'images\\DevelopersImage\\Dev5.jpg');
 
 -- --------------------------------------------------------
 
@@ -222,6 +209,16 @@ CREATE TABLE `orderlist` (
   `DeliveryInstruction` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `orderlist`
+--
+
+INSERT INTO `orderlist` (`OrderID`, `CustomerID`, `OrderAddress`, `OrderDate`, `Status`, `OrderPrice`, `DeliveryDate`, `DeliveryInstruction`) VALUES
+(1, 4, ' Dhaka', '2022-03-14 22:26:25', 'Pending', 2200, '2022-03-21', 'Cash on Delivery'),
+(2, 4, 'Dhaka', '2022-03-14 22:31:22', 'Pending', 2200, '2022-03-21', 'Cash on Delivery'),
+(3, 4, ' Dhaka', '2022-03-14 22:50:11', 'Pending', 6200, '2022-03-21', 'Cash on Delivery'),
+(4, 4, ' Mohammedpur.', '2022-03-14 22:54:52', 'Pending', 2800, '2022-03-21', 'Cash on Delivery');
+
 -- --------------------------------------------------------
 
 --
@@ -274,12 +271,6 @@ ALTER TABLE `customer`
   ADD PRIMARY KEY (`CustID`);
 
 --
--- Indexes for table `developersinfo`
---
-ALTER TABLE `developersinfo`
-  ADD PRIMARY KEY (`DevID`);
-
---
 -- Indexes for table `item`
 --
 ALTER TABLE `item`
@@ -305,7 +296,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `cartlist`
 --
 ALTER TABLE `cartlist`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `chef`
@@ -326,12 +317,6 @@ ALTER TABLE `customer`
   MODIFY `CustID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `developersinfo`
---
-ALTER TABLE `developersinfo`
-  MODIFY `DevID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
@@ -341,7 +326,7 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `orderlist`
 --
 ALTER TABLE `orderlist`
-  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `reviews`
