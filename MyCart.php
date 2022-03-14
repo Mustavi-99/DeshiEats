@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
     $finalTotal = $_POST['finalTotal'];
     $stats="Pending";
 
-    echo $user_id . " " . $contact . " " . $useraddress . " " . $usermessage . " " . $finalTotal;
+    //echo $user_id . " " . $contact . " " . $useraddress . " " . $usermessage . " " . $finalTotal;
 
     $i = 1;
     $ItemNames = "";
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
     echo $date;
     $instruction='Cash on Delivery';
 
-    if (!empty($user_id) && !empty($contact) && !empty($useraddress) && !empty($usermessage) && !empty($finalTotal) && !empty($ItemNames)) {
+    if (!empty($user_id) && !empty($useraddress) &&  !empty($finalTotal) && !empty($ItemNames)) {
         $Query="INSERT INTO orderlist(CustomerID, OrderAddress, Status, OrderPrice, DeliveryDate, DeliveryInstruction) VALUES ('$user_id','$useraddress','$stats','$finalTotal','$date','$instruction')";
         
 
