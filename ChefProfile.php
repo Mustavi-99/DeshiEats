@@ -75,7 +75,7 @@ if($_SERVER['REQUEST_METHOD']=='POST' && isset($_SESSION['ID'])){
     ?>
       <script type="text/javascript">
         alert("Some fields are empty.Check again");
-        window.location.href = "Chef.php"
+        window.location.href = "ChefProfile.php"
       </script>
     <?php
 
