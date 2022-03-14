@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+include("connect.php");
+
 $price = 0;
 $count = 0;
 
@@ -8,8 +10,8 @@ $count = 0;
 if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
 
 
-    if (isset($_SESSION['user_id'])) {
-        $user_id = $_SESSION['user_id'];
+    if (isset($_SESSION['ID'])) {
+        $user_id = $_SESSION['ID'];
     }
 
 
@@ -18,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
     $useraddress = $_POST['useraddress'];
     $usermessage = $_POST['usermessage'];
     $finalTotal = $_POST['finalTotal'];
+    $stats="Pending";
 
     echo $user_id . " " . $contact . " " . $useraddress . " " . $usermessage . " " . $finalTotal;
 
@@ -27,20 +30,50 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
 
         $ItemNames .= $i . ". " . $z['Item_name'] . "<br>";
         $i++;
+
+        //$Query1="INSERT INTO cartlist(ID, OrderID, ItemName, Quantity, TotalPrice) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5])";
+
     }
 
-
+    $date = date('Y-m-d', strtotime('+7 days'));
+    echo $date;
+    $instruction='Cash on Delivery';
 
     if (!empty($user_id) && !empty($contact) && !empty($useraddress) && !empty($usermessage) && !empty($finalTotal) && !empty($ItemNames)) {
+        $Query="INSERT INTO orderlist(CustomerID, OrderAddress, Status, OrderPrice, DeliveryDate, DeliveryInstruction) VALUES ('$user_id','$useraddress','$stats','$finalTotal','$date','$instruction')";
+        
 
-        $query = "insert into placedorders(UserID,fullname,contact,address,message,Items,totalprice) VALUES ('$user_id','$name','$contact','$useraddress','$usermessage','$ItemNames','$finalTotal')";
-        mysqli_query($con, $query);
+        if(mysqli_query($link, $Query)){
+            //unset($_SESSION['cart']);
+            echo "<script>
+            alert('Checked out');
+            //window.location.href='Menu.php';
+            </script>";
+            
+            $Query2="SELECT * FROM orderlist ORDER BY OrderID DESC LIMIT 1";
+            $result = mysqli_query($link,$Query2);
+            $row = mysqli_fetch_assoc($result);
+            $orderID=$row['OrderID'];
+            
+            foreach ($_SESSION['cart'] as $x => $z) {
 
-        unset($_SESSION['cart']);
-        echo "<script>
-        alert('Checked out');
-        //window.location.href='Menu.php';
-        </script>";
+                $item=$z['Item_name'] ;
+                $qty=$z['Quantity'] ;
+        
+                $Query3="INSERT INTO cartlist(OrderID, ItemName, Quantity, TotalPrice) VALUES ('$orderID','$item','$qty','$finalTotal')";
+                echo $Query3;
+                mysqli_query($link,$Query3);
+            }
+            unset($_SESSION['cart']);
+            
+        }else{
+            unset($_SESSION['cart']);
+            echo "<script>
+            alert('Error!');
+            //window.location.href='Menu.php';
+            </script>";
+        }
+
     }
 }
 
