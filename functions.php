@@ -89,11 +89,13 @@
                
                $_SESSION["ID"]=$userExists["ChefID"];
                $_SESSION["type"]=$type;
+               $_SESSION["uName"]=$userExists["ChefName"];
                ?><script>window.location.href="Chef'sExhibition.php";</script><?php
            
             }elseif($type=="customer"){
                $_SESSION["ID"]=$userExists["CustID"];
                $_SESSION["type"]=$type;
+               $_SESSION["uName"]=$userExists["CustName"];
                echo "<script>window.location.href='index.php';</script>";
             }
 

@@ -1,5 +1,16 @@
 <?php
 session_start();
+
+include("connect.php");
+include("functions.php");
+
+if(isset($_SESSION["ID"])){
+    $user_id=$_SESSION["ID"];
+    $query="SELECT * FROM orderlist o join cartlist c  ON c.OrderID = o.OrderID WHERE o.CustomerID=".$user_id;
+    $resultset = mysqli_query($link, $query);
+    
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,42 +57,36 @@ session_start();
 
                     <div class="col-11 userprofiledit ">
                         <div class="userprofileheading mt-4">
-                            <p class="userprofileheadinguser">#Name, Your Order status:</p>
+                            <p class="userprofileheadinguser"><?php echo $_SESSION["uName"]; ?>, Your Order history:</p>
                         </div>
                     </div>
                     <div class="col-xl-12">
                         <table class="table table-bordered ordertable">
                             <thead>
                                 <tr class="text-align-center">
-                                    <th scope="col" class="orderhead">Order No.</th>
-                                    <th scope="col" class="orderhead">Item Name and Description</th>
-                                    <th scope="col" class="orderhead">Base Price</th>
-                                    <th scope="col" class="orderhead">Quantity</th>
-                                    <th scope="col" class="orderhead">Pending Status</th>
+                                    <th hidden scope="col" class="orderhead">Order No.</th>
+                                    <th scope="col" class="orderhead">Item Name</th>
+                                    <th scope="col" class="orderhead">Total Price</th>
+                                    <th scope="col" class="orderhead">Address</th>
+                                    <th scope="col" class="orderhead">Status</th>
+                                    <th scope="col" class="orderhead">Delivery date</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
+                                <?php 
+                                while($row=mysqli_fetch_assoc($resultset)){
+                                ?>
                                 <tr>
-                                    <td class='orderdatas'>1</td>
-                                    <td class='orderdatas'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur, porro quibusdam. Doloribus cupiditate vitae similique numquam accusamus quam, odit est repudiandae itaque aliquid saepe amet iure deserunt harum odio beatae.</td>
-                                    <td class='orderdatas'>12</td>
-                                    <td class='orderdatas'>1</td>
-                                    <td class='orderdatas'>Delivered</td>
+                                    <td hidden class='orderdatas'><?php echo $row['OrderID']; ?></td>
+                                    <td class='orderdatas'><?php echo $row['ItemName']; ?></td>
+                                    <td class='orderdatas'><?php echo $row['TotalPrice'];   ?></td>
+                                    <td class='orderdatas'><?php echo $row['OrderAddress'];     ?></td>
+                                    <td class='orderdatas'><?php echo $row['Status'];       ?></td>
+                                    <td class='orderdatas'><?php echo $row['DeliveryDate'];       ?></td>
                                 </tr>
-                                <tr>
-                                    <td class='orderdatas'>2</td>
-                                    <td class='orderdatas'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur, porro quibusdam. Doloribus cupiditate vitae similique numquam accusamus quam, odit est repudiandae itaque aliquid saepe amet iure deserunt harum odio beatae.</td>
-                                    <td class='orderdatas'>1</td>
-                                    <td class='orderdatas'>10</td>
-                                    <td class='orderdatas'>Pending</td>
-                                </tr>
-                                <tr>
-                                    <td class='orderdatas'>2</td>
-                                    <td class='orderdatas'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur, porro quibusdam. Doloribus cupiditate vitae similique numquam accusamus quam, odit est repudiandae itaque aliquid saepe amet iure deserunt harum odio beatae.</td>
-                                    <td class='orderdatas'>1</td>
-                                    <td class='orderdatas'>10</td>
-                                    <td class='orderdatas'>Received</td>
-                                </tr>
+                                <?php 
+                                }
+                                ?>
                                 <?php
 
                                 //********Backend e help lagle php code rakhis naile delete korish********
