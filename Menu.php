@@ -30,6 +30,10 @@ if (!isset($_GET['page'])) {
   $page = $_GET['page'];
   $predis = "false";
 }
+
+$count = 0;
+$Quantity = 1;
+
 $results_per_page = 8;
 $page_first_result = ($page - 1) * $results_per_page;
 $number_of_result = mysqli_num_rows($resultset);
@@ -99,10 +103,14 @@ $results = mysqli_query($link, $query);
                   </button>
                 </div>
               </div> -->
-              <button class="addtocart">
-                <p class="">ADD TO CART</p>
-                <i class="fas fa-shopping-cart"></i>
-              </button>
+              <form action="ManageCart.php" method="POST">
+                <div class="allthings card-body text-center d-flex flex-column align-items-center">
+
+                  <button type="submit" name="Add_To_Cart" class="cartButton"> Add To Cart</button>
+                  <input type="hidden" name="Item_name" value="<?= $row['ItemName'] ?>">
+                  <input type="hidden" name="Item_price" value="<?= $row['Price'] ?>">
+                </div>
+              </form>
             </div>
           </div>
       </div>
@@ -196,15 +204,15 @@ $results = mysqli_query($link, $query);
   <!--pagination-->
 
   <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center m-5" >
-    <!-- style="background-color: #212529;" -->
+    <ul class="pagination justify-content-center m-5">
+      <!-- style="background-color: #212529;" -->
       <?php
       // if (isset($_GET['search'])) {
       //   $purl = $url . "&page=";
       // } else {
       //   $purl = "products.php?page=";
       // }
-      $purl="Menu.php?page=";
+      $purl = "Menu.php?page=";
       $prepage = $page - 1;
       $postpage = $page + 1;
       if ($page >= 2) {

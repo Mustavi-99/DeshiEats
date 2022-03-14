@@ -1,3 +1,51 @@
+<?php
+session_start();
+
+$price = 0;
+$count = 0;
+
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
+
+
+    if (isset($_SESSION['user_id'])) {
+        $user_id = $_SESSION['user_id'];
+    }
+
+
+    $name =  $_POST['username'];
+    $contact = $_POST['usercontact'];
+    $useraddress = $_POST['useraddress'];
+    $usermessage = $_POST['usermessage'];
+    $finalTotal = $_POST['finalTotal'];
+
+    echo $user_id . " " . $contact . " " . $useraddress . " " . $usermessage . " " . $finalTotal;
+
+    $i = 1;
+    $ItemNames = "";
+    foreach ($_SESSION['cart'] as $x => $z) {
+
+        $ItemNames .= $i . ". " . $z['Item_name'] . "<br>";
+        $i++;
+    }
+
+
+
+    if (!empty($user_id) && !empty($contact) && !empty($useraddress) && !empty($usermessage) && !empty($finalTotal) && !empty($ItemNames)) {
+
+        $query = "insert into placedorders(UserID,fullname,contact,address,message,Items,totalprice) VALUES ('$user_id','$name','$contact','$useraddress','$usermessage','$ItemNames','$finalTotal')";
+        mysqli_query($con, $query);
+
+        unset($_SESSION['cart']);
+        echo "<script>
+        alert('Checked out');
+        //window.location.href='Menu.php';
+        </script>";
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -26,14 +74,14 @@
 <body>
 
 
-      <?php
-        include "header.php" ;
-      ?>
+    <?php
+    include "header.php";
+    ?>
 
 
-    <div class="container userprofileform">
+    <div class="container">
 
-        <div class="row userprofileformrow">
+        <div class="row allorders">
             <!--image container div-->
 
             <div class="col-11 userprofiledit ">
@@ -45,54 +93,15 @@
                 <table class="table table-bordered ordertable">
                     <thead>
                         <tr class="text-align-center">
-                            <th scope="col" class="orderhead">Order No.</th>
+                            <th scope="col" class="orderhead">Item No.</th>
                             <th scope="col" class="orderhead">Item Name and Description</th>
                             <th scope="col" class="orderhead">Base Price</th>
                             <th scope="col" class="orderhead">Quantity</th>
-                            <th scope="col" class="orderhead">Pending Status</th>
+                            <th scope="col" class="orderhead">Total Price</th>
                             <th scope="col" class="orderhead">Remove</th>
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        <tr>
-                            <td class='orderdatas'>1</td>
-                            <td class='orderdatas'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur, porro quibusdam. Doloribus cupiditate vitae similique numquam accusamus quam, odit est repudiandae itaque aliquid saepe amet iure deserunt harum odio beatae.</td>
-                            <td class='orderdatas'>12</td>
-                            <td class='orderdatas'>1</td>
-                            <td class='orderdatas'>Delivered</td>
-                            <td>
-                                <form action='ManageCart.php' method='POST'>
-                                    <button name='Remove_Item' class='plusMinusButton'> REMOVE </button>
-                                    <input type='hidden' name='Item_name' value='$value[Item_name]'>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class='orderdatas'>2</td>
-                            <td class='orderdatas'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur, porro quibusdam. Doloribus cupiditate vitae similique numquam accusamus quam, odit est repudiandae itaque aliquid saepe amet iure deserunt harum odio beatae.</td>
-                            <td class='orderdatas'>1</td>
-                            <td class='orderdatas'>10</td>
-                            <td class='orderdatas'>Pending</td>
-                            <td>
-                                <form action='ManageCart.php' method='POST'>
-                                    <button name='Remove_Item' class='plusMinusButton'> REMOVE </button>
-                                    <input type='hidden' name='Item_name' value='$value[Item_name]'>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class='orderdatas'>2</td>
-                            <td class='orderdatas'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur, porro quibusdam. Doloribus cupiditate vitae similique numquam accusamus quam, odit est repudiandae itaque aliquid saepe amet iure deserunt harum odio beatae.</td>
-                            <td class='orderdatas'>1</td>
-                            <td class='orderdatas'>10</td>
-                            <td class='orderdatas'>Received</td>
-                            <td>
-                                <form action='ManageCart.php' method='POST'>
-                                    <button name='Remove_Item' class='plusMinusButton'> REMOVE </button>
-                                    <input type='hidden' name='Item_name' value='$value[Item_name]'>
-                                </form>
-                            </td>
-                        </tr>
                         <?php
 
                         //********Backend e help lagle php code rakhis naile delete korish********
@@ -124,64 +133,94 @@
                     </tbody>
                 </table>
             </div>
+
+
+            <form action="" method="POST">
+                <div class="col-xl-12">
+                    <div class="mt-3 mb-3">
+                        <label class="mb-2 orderhead">Recipient Name</label>
+                        <input type="text" placeholder="Enter your name" name="username" value="" class="form-control" required />
+                    </div>
+                </div>
+
+
+                <div class="col-xl-12">
+                    <div class=" mb-3">
+                        <label class="mb-2 orderhead">Contact Number</label>
+                        <input type="text" placeholder="Enter your contact number" name="usercontact" value="" class="form-control tbox" />
+                    </div>
+                </div>
+
+                <div class="col-xl-12">
+                    <div class="mb-3">
+                        <label class="mb-2 orderhead">Enter Address</label>
+                        <textarea name="useraddress" placeholder="Enter your full address" class="form-control"> </textarea>
+                    </div>
+                </div>
+
+                <div class="col-xl-12">
+                    <div class="mb-3">
+                        <label class="mb-2 orderhead">Enter message</label>
+                        <textarea name="usermessage" placeholder="Enter any message if you wish to" class="form-control"> </textarea>
+                    </div>
+                </div>
+                <div class="col-xl-12" style="display:none">
+                    <div class=" mb-3">
+                        <label class="mb-2 orderhead">Contact Number</label>
+                        <input type="text" placeholder="Enter your contact number" id="finalTotal" name="finalTotal" value="" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="col-xl-12 ">
+                    <div class="border bd-light rounded p-4 orderdatas d-flex flex-column align-items-center totalbox">
+                        <h5>Grand Total:</h5>
+                        <h3 class="text-center orderdatas" id="gtotal"></h3>
+                        <br>
+                        <button type="submit" name="submitButton" class="orderButton" onclick="">Confirm Order</button>
+                    </div>
+                </div>
             </form>
+
         </div>
-        <form action="" method="POST">
-            <div class="col-xl-12">
-                <div class="mt-3 mb-3">
-                    <label class="mb-2 orderhead">Recipient Name</label>
-                    <input type="text" placeholder="Enter your name" name="username" value="" class="form-control" required />
-                </div>
-            </div>
-
-
-            <div class="col-xl-12">
-                <div class=" mb-3">
-                    <label class="mb-2 orderhead">Contact Number</label>
-                    <input type="text" placeholder="Enter your contact number" name="usercontact" value="" class="form-control tbox" />
-                </div>
-            </div>
-
-            <div class="col-xl-12">
-                <div class="mb-3">
-                    <label class="mb-2 orderhead">Enter Address</label>
-                    <textarea name="useraddress" placeholder="Enter your full address" class="form-control"> </textarea>
-                </div>
-            </div>
-
-            <div class="col-xl-12">
-                <div class="mb-3">
-                    <label class="mb-2 orderhead">Enter message</label>
-                    <textarea name="usermessage" placeholder="Enter any message if you wish to" class="form-control"> </textarea>
-                </div>
-            </div>
-            <div class="col-xl-12" style="display:none">
-                <div class=" mb-3">
-                    <label class="mb-2 orderhead">Contact Number</label>
-                    <input type="text" placeholder="Enter your contact number" id="finalTotal" name="finalTotal" value="" class="form-control" />
-                </div>
-            </div>
-
-            <div class="col-xl-3 ">
-                <div class="border bd-light rounded p-4 orderdatas d-flex flex-column align-items-center totalbox">
-                    <h5>Grand Total:</h5>
-                    <h3 class="text-center orderdatas" id="gtotal"></h3>
-                    <br>
-                    <button type="submit" name="submitButton" class="orderButton" onclick="">Confirm Order</button>
-                </div>
-            </div>
-        </form>
-
-    </div>
 
 
     </div>
 
     <?php
-          include "footer.php";
-        ?>
+    include "footer.php";
+    ?>
 
 
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        var gt = 0;
+        var iprice = document.getElementsByClassName('iprice');
+        var iquantity = document.getElementsByClassName('iquantity');
+        var itotal = document.getElementsByClassName('itotal');
+        var gtotal = document.getElementById('gtotal');
+
+        function subTotal() {
+
+
+            gt = 0;
+            for (i = 0; i < iprice.length; i++) {
+                itotal[i].innerText = (iprice[i].value) * (iquantity[i].value);
+                gt = gt + (iprice[i].value) * (iquantity[i].value);
+            }
+            gtotal.innerText = gt;
+            var finalTotal = document.getElementById('gtotal').innerHTML;
+            document.getElementById('finalTotal').value = finalTotal;
+            console.log(finalTotal);
+
+
+
+        }
+
+
+        subTotal();
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

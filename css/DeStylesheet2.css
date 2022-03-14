@@ -326,3 +326,32 @@ h1 {
   color: #379683;
   font-size: 18px;
 }
+
+.cartButton {
+  color: #384f5e;
+  background-color: #2cb1bb;
+  border-color: #c4f8ee;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 10px;
+  width: 85%;
+}
+
+.cartButton:hover,
+.cartButton:active,
+.cartButton:focus,
+.cartButton.active {
+  background: #4fbfa8;
+  color: #ffffff;
+  border-color: #4fbfa8;
+}
+
+.allorders {
+  padding-left: 80px;
+  padding-right: 80px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+.ordertable {
+  text-align: center;
+}

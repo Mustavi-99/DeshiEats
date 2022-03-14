@@ -39,16 +39,15 @@
               <li class='nav-item'><a class='nav-link navwrite' href='ChefOrderStatus.php'>Chef's Order</a>
               </li>
               <li class='nav-item'><a class='nav-link navwrite' href='Contact.php'>Contact Us</a>
-            </li><?php
+              </li><?php
                     // echo "<li class='nav-item'><a class='nav-link' href='logOut.php'><i class='fas fa-sign-out-alt ico'></i></a></li>";
-                  }
-                 elseif ($_SESSION['type'] == "Admin") {
+                  } elseif ($_SESSION['type'] == "Admin") {
                     ?><li class='nav-item'>
-                      <a class='nav-link navwrite' href="AdminPanel.php">Admin Panel</a></li>
+                <a class='nav-link navwrite' href="AdminPanel.php">Admin Panel</a>
+              </li>
           <?php
-                }
-               }
-               else {
+                  }
+                } else {
                   //  echo "<li class='nav-item'><a class='nav-link navwrite' href='Register.php'>Register</a></li>";
                   //  echo "<li class='nav-item'><a class='nav-link navwrite' href='Login.php'>Login</a></li>";
                   echo "<li class='nav-item'>
@@ -56,12 +55,12 @@
                        </li>
                        <li class='nav-item'><a class='nav-link navwrite' href='Contact.php'>Contact Us</a>
             </li>";
-                } 
+                }
           ?>
-            <!-- <li class="nav-item">
+          <!-- <li class="nav-item">
                     <a class="nav-link navwrite" href="#">About</a>
                   </li> -->
-            <!-- <li class="nav-item">
+          <!-- <li class="nav-item">
                     <a class="nav-link navwrite" href="#">Devs Corner</a>
                   </li> -->
 
@@ -73,11 +72,10 @@
               echo "<li class='nav-item'><a class='nav-link navwrite' href='ChefProfile.php'><i class='fas fa-user ico'></i></a></li>";
               //echo "<li class='nav-item'><a class='nav-link' href='logOut.php'><i class='fas fa-sign-out-alt ico'></i></a></li>";
             } else if ($_SESSION['type'] == "customer") {
-              echo "<li class='nav-item'><a class='nav-link' href='#'><i class='fas fa-shopping-cart icons ico'></i></a></li>";
+              echo "<li class='nav-item'><a class='nav-link' href='MyCart.php'><i class='fas fa-shopping-cart icons ico'></i></a></li>";
               echo "<li class='nav-item'><a class='nav-link navwrite' href='CustomerProfile.php'><i class='fas fa-user ico'></i></a></li>";
               //echo "<li class='nav-item'><a class='nav-link' href='logOut.php'><i class='fas fa-sign-out-alt ico'></i></a></li>";
-            }else if ($_SESSION['type'] == "Admin") {
-
+            } else if ($_SESSION['type'] == "Admin") {
             }
             echo "<li class='nav-item'><a class='nav-link' href='logOut.php'><i class='fas fa-sign-out-alt ico'></i></a></li>";
           } else {
