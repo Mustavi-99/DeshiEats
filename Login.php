@@ -121,7 +121,7 @@
                         </form>
                         <div class="signup formbox mb-3"> 
                             <p class="dont">Don't have an account??</p>
-                            <a class="signupregi" href="Register.html">Sign Up</a>
+                            <a class="signupregi" href="Register.php">Sign Up</a>
                         </div>
                     </form>
                 </div>

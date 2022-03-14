@@ -11,14 +11,14 @@
     $passwrd=$_POST['pass'];
     $confpasswrd=$_POST['cpass'];
     
-    $chefDescription="About Chef";
-    $chefAddress="Chef/Company Address";
-    $chefArea="Chef/Company area";
-    $chefImage="Chef Image";
+    $chefDescription="";
+    $chefAddress="";
+    $chefArea="";
+    $chefImage="";
     
     $custOrder=0;
-    $custAddress="N/A";
-    $custArea="N/A";
+    $custAddress="";
+    $custArea="";
 
     $userType=$_POST['utype'];
 
