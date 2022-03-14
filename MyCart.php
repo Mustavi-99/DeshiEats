@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
 
     $date = date('Y-m-d', strtotime('+7 days'));
     echo $date;
-    $instruction = 'Cash on Delivery';
+    $instruction = $_POST['paymentSystem'];
 
     if (!empty($user_id) && !empty($useraddress) &&  !empty($finalTotal) && !empty($ItemNames)) {
         $Query="INSERT INTO orderlist(CustomerID, OrderAddress, Status, OrderPrice, DeliveryDate, DeliveryInstruction) VALUES ('$user_id','$useraddress','$stats','$finalTotal','$date','$instruction')";
@@ -182,12 +182,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {     //Something was posted
                         Digital Payment <input type="radio" name="paymentSystem" value="Digital Payment">
                     </div>
                 </div>
-
+                
+                <div class="col-xl-12" style="display:none">
+                    <div class=" mb-3">
+                    <label class="mb-2 orderhead">Contact Number</label>
+                    <input type="text" placeholder="Enter your contact number" id="finalTotal" name="finalTotal" value="" class="form-control" />
+                    </div>
+                </div>
 
                 <div class="col-xl-12 ">
                     <div class="border bd-light rounded p-4 orderdatas d-flex flex-column align-items-center totalbox">
                         <h5>Grand Total:</h5>
-                        <h3 class="text-center orderdatas" id="gtotal"></h3>
+                        <h3 class="text-center orderdatas" id="gtotal" name="finalTotal"></h3>
                         <br>
                         <button type="submit" name="submitButton" class="orderButton" onclick="">Confirm Order</button>
                     </div>
