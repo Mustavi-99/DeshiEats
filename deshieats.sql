@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2022 at 02:27 AM
+-- Generation Time: Mar 15, 2022 at 03:36 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 7.4.22
 
@@ -40,7 +40,8 @@ CREATE TABLE `assignedrider` (
 
 INSERT INTO `assignedrider` (`AssignId`, `CartID`, `Rider Name`, `Complete`) VALUES
 (3, 17, 'Musta', 1),
-(4, 15, 'Neloy', 1);
+(4, 15, 'Neloy', 1),
+(5, 18, 'Musta', 1);
 
 -- --------------------------------------------------------
 
@@ -64,7 +65,8 @@ CREATE TABLE `cartlist` (
 INSERT INTO `cartlist` (`ID`, `OrderID`, `ItemName`, `Quantity`, `TotalPrice`, `CartStatus`) VALUES
 (15, 13, 'Classic Chocolate Ca', 1, 1200, 'Deliver'),
 (16, 13, 'Classic Vanilla Cake', 1, 1000, 'Cancelled'),
-(17, 13, 'Black Forest Cake 1 ', 1, 1400, 'Deliver');
+(17, 13, 'Black Forest Cake 1 ', 1, 1400, 'Deliver'),
+(18, 14, 'Classic Chocolate Ca', 1, 1200, 'Deliver');
 
 -- --------------------------------------------------------
 
@@ -90,7 +92,7 @@ CREATE TABLE `chef` (
 --
 
 INSERT INTO `chef` (`ChefID`, `ChefName`, `ChefEmail`, `ChefPassword`, `ChefContactNumber`, `ChefDescription`, `ChefAddress`, `ChefArea`, `ChefImage`, `Status`) VALUES
-(1, 'New-Chef', 'reaperj42@gmail.com', '123456', 1552321408, 'About Chef', 'Chef/Company Address', 'Chef/Company area', 'Chef Image', 'Banned'),
+(1, 'New-Chef', 'reaperj42@gmail.com', '123456', 1552321408, 'About Chef', 'Chef/Company Address', 'Chef/Company area', '', 'Banned'),
 (2, 'Homely Chinese', 'homelychinese@gmail.com', '123456', 1, 'Whether you want Fried rice or a banquet with spectacular Chinese food, We serve them all in Homely ', 'abc', 'abc', 'images/DeshiEatsMenu/HomelyChinese/Cover.jpg', 'Active'),
 (3, 'Food Tong', 'foodtong@gmail.com', '12345688', 2147483647, 'Craving light snacks? At our Food Tong, we offer a variety of Bengali snacks prepared in the healthi', 'Dhanmondi-1205,Dhaka,Bangladesh', 'abc', 'images/Uploaded/3Cover.jpg', 'Active'),
 (4, 'Ghorowa Shaad', 'ghorowashaad@gmail.com', '123456', 1, 'Ghorowa Shaad brings authentic Bengali homemade dishes to your doorstep! ', 'abc', 'abc', 'images/DeshiEatsMenu/GhorowaShaad/Cover.jpeg', 'Active'),
@@ -235,25 +237,8 @@ CREATE TABLE `orderlist` (
 --
 
 INSERT INTO `orderlist` (`OrderID`, `CustomerID`, `OrderAddress`, `OrderDate`, `OrderStatus`, `OrderPrice`, `DeliveryDate`, `DeliveryInstruction`) VALUES
-(13, 2, 'Farmgate', '2022-03-15 03:08:46', 'Pending', 10200, '2022-03-21', 'Cash On Delivery');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `revenue`
---
-
-CREATE TABLE `revenue` (
-  `RID` int(11) NOT NULL,
-  `RValue` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `revenue`
---
-
-INSERT INTO `revenue` (`RID`, `RValue`) VALUES
-(1, 6120);
+(13, 2, 'Farmgate', '2022-03-15 03:08:46', 'Pending', 10200, '2022-03-21', 'Cash On Delivery'),
+(14, 2, ' Farmgate', '2022-03-15 08:30:19', 'Pending', 4800, '2022-03-22', 'Cash On Delivery');
 
 -- --------------------------------------------------------
 
@@ -325,12 +310,6 @@ ALTER TABLE `orderlist`
   ADD PRIMARY KEY (`OrderID`);
 
 --
--- Indexes for table `revenue`
---
-ALTER TABLE `revenue`
-  ADD PRIMARY KEY (`RID`);
-
---
 -- Indexes for table `reviews`
 --
 ALTER TABLE `reviews`
@@ -344,13 +323,13 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `assignedrider`
 --
 ALTER TABLE `assignedrider`
-  MODIFY `AssignId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `AssignId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `cartlist`
 --
 ALTER TABLE `cartlist`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `chef`
@@ -380,13 +359,7 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `orderlist`
 --
 ALTER TABLE `orderlist`
-  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT for table `revenue`
---
-ALTER TABLE `revenue`
-  MODIFY `RID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `reviews`

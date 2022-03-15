@@ -355,17 +355,9 @@
       
       }
     }
-    function updateAssignndINcreaseRev($con,$id,$price){
-      $sql = "UPDATE `assignedrider` SET `Complete`='1' WHERE AssignId = ".$id;
-    echo $sql;
-    mysqli_query($con, $sql);
-    $rev = (float) (0.2) * (float)($price);
-    echo $rev;
-    $revsql = "SELECT * FROM `revenue` WHERE RID = 1 ";
-    $revresult = mysqli_fetch_assoc(mysqli_query($con,$revsql));
-    $revnew = $revresult["RValue"] + $rev;
-    $revinsert = "UPDATE `revenue` SET `RValue`='$revnew' WHERE RID = 1";
-    if(mysqli_query($con,$revinsert)){
+    function updateAssignnd($con,$id){
+    $sql = "UPDATE `assignedrider` SET `Complete`='1' WHERE AssignId = ".$id;
+    if(mysqli_query($con, $sql)){
       $status=true;
         return $status;
         
@@ -373,7 +365,6 @@
           
         $status=false;
         return $status;
-      
     }
     }
     

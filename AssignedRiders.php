@@ -10,10 +10,10 @@ $result = mysqli_query($link, $sql);
 if (isset($_GET["aid"]) && isset($_GET["prize"])){
     $id=$_GET["aid"];
     $price =$_GET["prize"];
-    if(updateAssignndINcreaseRev($link,$id,$price)){
+    if(updateAssignnd($link,$id)){
         ?>
         <script type="text/javascript">
-            alert("Yay!!! Revenue Increased.");
+            alert("Yay!!! Update Done.");
             window.location.href = 'AssignedRiders.php'
         </script>
     <?php
@@ -21,7 +21,7 @@ if (isset($_GET["aid"]) && isset($_GET["prize"])){
     } else {
     ?>
         <script type="text/javascript">
-            alert("Error!Oh no, no revenue. check the revenue function");
+            alert("Error!Oh no, no update. check the update function");
             window.location.href = 'AssignedRiders.php'
         </script>
     <?php

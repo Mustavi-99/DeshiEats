@@ -246,7 +246,16 @@ if (isset($_SESSION["ID"])) {
       <?php
       while ($row = mysqli_fetch_assoc($chefresults)) { ?>
         <div class=" col-sm-6 col-md-6 col-lg-4 col-xl-4 cheffall">
-          <img src="<?php echo $row["ChefImage"] ?>">
+        <?php
+          if (!empty($row["ChefImage"])) {
+          ?>
+            <img src="<?php echo $row["ChefImage"] ?>">
+          <?php
+          } else { ?>
+            <img src="images/profile.png">
+          <?php
+          }
+          ?>
           <div class="cheffdeatails ml-31">
             <p class="cheffname"><?php echo $row["ChefName"] ?>
             <p>
@@ -298,15 +307,6 @@ if (isset($_SESSION["ID"])) {
             <p class="Reviewitemsname"><?php echo $row["CustName"] ?></p>
             <p class="Reviewitemsdes"><?php echo $row["Message"] ?></p>
             <p class="">
-              <?php
-              for ($i = 1; $i <= 5; $i++) {
-                if ($i <= $row["Rating"]) {
-                  echo "<i class='fa fa-star text-warning'></i>";
-                } else {
-                  echo "<i class='fa fa-star text-secondary'></i>";
-                }
-              }
-              ?>
 
           </div>
         </div>
